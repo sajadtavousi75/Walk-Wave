@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: koho;
+    src: url(../../public/fonts/KoHo-Bold.ttf);
+}
+@font-face {
+    font-family: quikr;
+    src: url(../../public/fonts/Quicksand-Regular.ttf);
+}
