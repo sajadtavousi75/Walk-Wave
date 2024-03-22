@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: koho;
+    font-family: kohob;
     src: url(../../public/fonts/KoHo-Bold.ttf);
+}
+@font-face {
+    font-family: kohoe;
+    src: url(../../public/fonts/KoHo-ExtraLight.ttf);
 }
 @font-face {
     font-family: quikr;

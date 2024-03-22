@@ -1,9 +1,8 @@
 import Navbar from "@/component/modules/Navbar/Navbar";
-import Image from "next/image";
 
 export default function Home() {
   return (
-    <div>
+    <div className="border-solid border-b-4 border-secondary1">
       <Navbar />
     </div>
   );
