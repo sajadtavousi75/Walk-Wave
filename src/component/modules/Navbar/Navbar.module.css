@@ -1,0 +1,11 @@
+.hidden {
+    opacity: 1;
+    display: none;
+    transform: translateX(800px);
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
+  }
+  
+  .visible {
+    opacity: 1;
+    display: flex;
+  }
