@@ -7,8 +7,8 @@
     src: url(../../public/fonts/KoHo-Bold.ttf);
 }
 @font-face {
-    font-family: kohoe;
-    src: url(../../public/fonts/KoHo-ExtraLight.ttf);
+    font-family: kohol;
+    src: url(../../public/fonts/KoHo-Light.ttf);
 }
 @font-face {
     font-family: quikr;

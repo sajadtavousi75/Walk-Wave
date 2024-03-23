@@ -18,7 +18,7 @@ module.exports = {
       },
       fontFamily:{
         kohob:['kohob'],
-        kohoe:['kohoe'],
+        kohol:['kohol'],
         quikr:['quikr']
       }
     },
