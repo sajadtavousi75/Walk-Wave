@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import {motion} from 'framer-motion'
 
 export default function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
@@ -145,8 +146,8 @@ export default function Navbar() {
     </div>
 
     {/* navbar mobile */}
-    <div className="md:hidden">
-        <div className="navbar-mobile h-[80px] container flex items-center justify-between">
+    <div className="md:hidden 	">
+        <div className="navbar-mobile h-[80px] container flex items-center justify-between  ">
             <div className="icon-menu">
                 {showMobileNavbar ? (
                 <img onClick={()=> setShowMobileNavbar(false)} className="cursor-pointer" src="./images/menu-ca.png" alt="" />
@@ -161,20 +162,45 @@ export default function Navbar() {
                 <img src="./images/Frame 9.png" alt="" />
             </div>
         </div>
-        <div className="sub-menu container  absolute  left-0 right-0">
-        <div className="top flex items-center justify-between">
-            <div className="left">
+        <div className={`${showMobileNavbar ? 'top-[83px] h-0 ' : 'top-[83px] h-[710px] '} transition-all duration-700 ease-in-out bg-primary1  sub-menu  absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden pt-[20px]`}>
+        <div className="top flex items-center justify-between container">
+          {!showMobileNavbar ? (
+
+            <motion.div
+            initial={{ opacity: 0, x: '-100vw', }}
+            animate={{ opacity: 1, x: 0 ,  }}
+            transition={{  stiffness: 100 , delay:1 }}
+            className="left">
                 <ul className="flex items-center justify-center gap-3">
-                    <li>HOME </li>
-                    <li>About Us</li>
+                    <li className="text-secondary1 font-kohob">HOME </li>
+                    <li className="font-kohol">About Us</li>
                 </ul>
-            </div>
-            <div className="right flex items-center justify-center gap-3">
+            </motion.div>
+          ) : (
+            <></>
+          )}
+            {!showMobileNavbar ? (
+
+            <motion.div
+            initial={{ opacity: 0, x: '100vw', }}
+            animate={{ opacity: 1, x: 0 ,  }}
+            transition={{  stiffness: 100 , delay:1 }} 
+            style={{}}
+            className="right flex items-center justify-center gap-3">
                 <img src="./images/basket 1.png" alt="" />
                 <img src="./images/profile 1.png" alt="" />
-            </div>
+            </motion.div>
+            ) : (
+              <></>
+            )}
         </div>
-        <div className="middel mt-5 flex flex-col items-center">
+        {!showMobileNavbar ? (
+
+        <motion.div
+        initial={{ opacity: 0, y: '100vw', }}
+        animate={{ opacity: 1, y: 0 ,  }}
+        transition={{  stiffness: 100 , delay:1 }}
+        className="middel mt-5 flex flex-col items-center">
             <h1 className="text-center font-kohob text-secondary1">SHOP</h1>
             <p className="text-secondary1 font-kohob border-solid border-b-2 border-secondary1 text-center">
               MEN
@@ -195,13 +221,16 @@ export default function Navbar() {
               <li className="hover:font-kohob cursor-pointer">football</li>
             </ul>
             <div className="question">
-                <p>Have a question or need assistance?</p>
-                <p>Our dedicated customer service team is here to help.</p>
-                <textarea className="bg-secondary1/10 w-[300px] h-[100px] rounded-lg focus:outline-none p-2" placeholder="Text"></textarea>
-                <button className="w-[140px] h-[40px] flex items-center justify-center border-solid border-2 border-primary2 rounded-full">SEND</button>
+                <p className="text-center font-kohob">Have a question or need assistance?</p>
+                <p className="text-center font-kohol">Our dedicated customer service team is here to help.</p>
+                <div className="flex items-center justify-center"><textarea className="bg-secondary1/10 w-[300px] h-[100px] rounded-lg focus:outline-none p-2" placeholder="Text"></textarea></div>
+                <div className="flex items-center justify-center"><button className="w-[140px] h-[40px] flex items-center justify-center border-solid border-2 border-primary2 rounded-full">SEND</button></div>
                 <p>© 2024 WalkWave</p>
             </div>
-        </div>
+        </motion.div>
+        ) : (
+          <></>
+        )}
         </div>
     </div>
     </>
