@@ -8,6 +8,7 @@ export default function Navbar() {
   const [showShop, setShowShop] = useState(false);
   const [showMobileNavbar , setShowMobileNavbar]= useState(true)
   const [showMobileSearch , setShowMobileSearch]= useState(false)
+  const [showMobileSearchResult , setShowMobileSearchResult]= useState(false)
 
   const cancelhandel = () => {
     setShowSearch(false);
@@ -18,11 +19,16 @@ export default function Navbar() {
     setShowSearch(true);
     setResultSearch(true);
   };
+
+  const handelMobile=()=>{
+    setShowMobileSearch(false)
+    setShowMobileSearchResult(false)
+  }
   return (
     <>
     {/* navbar desktab */}
     <div className="hidden md:flex">
-      <div className=" navbar h-[80px] container   flex items-center justify-between z-10 bg-primary1  ">
+      <div className=" navbar h-[80px] container   flex items-center justify-between z-10 bg-primary1  overflow-x-hidden">
         <div className="navbar-logo">
           <img src="./images/Frame 2.png" alt="" />
         </div>
@@ -83,7 +89,7 @@ export default function Navbar() {
             className={`${
               showSearch
                 ? "opacity-100 translate-x-16 visible"
-                : "opacity-0  translate-x-24 invisible"
+                : "opacity-0  translate-x-40 invisible"
             } transition-all duration-700 ease-in-out flex items-center justify-center`}
             onClick={cancelhandel}
           >
@@ -149,6 +155,11 @@ export default function Navbar() {
     {/* navbar mobile */}
     <div className="md:hidden 	">
         <div className="navbar-mobile h-[80px] container flex items-center justify-between  overflow-x-hidden">
+          {showMobileSearch ? (
+            <div className="icon-menu">
+                    <img onClick={handelMobile} className="cursor-pointer" src="./images/menu-can.png" alt="" />
+            </div>
+          ) : (
             <div className="icon-menu">
                 {showMobileNavbar ? (
                 <img onClick={()=> setShowMobileNavbar(false)} className="cursor-pointer" src="./images/menu-ca.png" alt="" />
@@ -156,17 +167,18 @@ export default function Navbar() {
                     <img onClick={()=> setShowMobileNavbar(true)} className="cursor-pointer" src="./images/menu-can.png" alt="" />
                 )}
             </div>
+          )}
             <div className="logo flex translate-x-20">
                 <img className={`${showMobileSearch ? 'opacity-0 invisible' : 'opacity-100 visible'} transition-all duration-700 ease-in-out`} src="./images/Frame 2.png" alt="" />
-                <input className={`${showMobileSearch ? '-translate-x-32 visible opacity-100' : 'translate-x-24 invisible opacity-0'} transition-all duration-700 ease-in-out w-[200px] h-[40px] text-center bg-secondary1/10 rounded-full p-2 focus:outline-none `} type="text" />
+                <input onChange={()=>setShowMobileSearchResult(true)} className={`${showMobileSearch ? '-translate-x-32 visible opacity-100' : 'translate-x-24 invisible opacity-0'} transition-all duration-700 ease-in-out w-[200px] h-[40px] text-center bg-secondary1/10 rounded-full p-2 focus:outline-none `} type="text" />
                 <img
-              className={`${showMobileSearch ? 'opacity-100 visible' : 'opacity-0 invisible'} transition-all duration-[1200ms] ease-in-ou absolute top-2 left-2`}
+              className={`${showMobileSearch ? 'opacity-100 visible left-2' : 'opacity-0 invisible left-80'} transition-all duration-700 ease-in-ou absolute top-2 left-2`}
               src="./images/search.png"
               alt=""
             />
             </div>
             
-            <div className={`${showMobileSearch ? '-translate-x-80 invisible opacity-0' : 'translate-x-0 visible opacity-100'} search transition-all duration-700 ease-in-out flex items-center justify-center`}>
+            <div className={`${showMobileSearch ? '-translate-x-[220px] sm:-translate-x-[330px] invisible opacity-0' : 'translate-x-0 visible opacity-100'} search transition-all duration-700 ease-in-out flex items-center justify-center`}>
                 <img onClick={()=>setShowMobileSearch(true)} src="./images/Frame 9.png" alt="" />
             </div>
         </div>
@@ -240,7 +252,7 @@ export default function Navbar() {
           <></>
         )}
         </div>
-        <div>
+        <div className={`${showMobileSearchResult ? 'top-[79px] h-[600px]' : 'top-[79px] h-0'} transition-all duration-700 ease-in-out bg-primary1   absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden mt-[5px]`}>
 
         </div>
     </div>
