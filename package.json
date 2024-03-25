@@ -12,8 +12,10 @@
     "bootstrap": "^5.3.3",
     "framer-motion": "^11.0.20",
     "next": "13.4.0",
+    "normalize.css": "^8.0.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "reset-css": "^5.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",

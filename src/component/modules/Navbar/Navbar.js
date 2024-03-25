@@ -7,6 +7,7 @@ export default function Navbar() {
   const [resultSearch, setResultSearch] = useState(false);
   const [showShop, setShowShop] = useState(false);
   const [showMobileNavbar , setShowMobileNavbar]= useState(true)
+  const [showMobileSearch , setShowMobileSearch]= useState(false)
 
   const cancelhandel = () => {
     setShowSearch(false);
@@ -21,7 +22,7 @@ export default function Navbar() {
     <>
     {/* navbar desktab */}
     <div className="hidden md:flex">
-      <div className=" navbar h-[80px] container flex items-center justify-between z-10 bg-primary1 p-0 ">
+      <div className=" navbar h-[80px] container   flex items-center justify-between z-10 bg-primary1  ">
         <div className="navbar-logo">
           <img src="./images/Frame 2.png" alt="" />
         </div>
@@ -58,7 +59,7 @@ export default function Navbar() {
           <div
             className={`${
               showSearch
-                ? "w-[200px] lg:w-[300px] xl:w-[400px]   -translate-x-[80%]"
+                ? "w-[200px] lg:w-[300px] xl:w-[400px]   -translate-x-[50%] lg:-translate-x-[60%] xl:-translate-x-[85%]"
                 : "w-[160px]"
             } transition-all duration-700 ease-in-out flex items-center justify-center  rounded-full `}
           >
@@ -66,7 +67,7 @@ export default function Navbar() {
               onChange={showSearchHandel}
               className={`${
                 showSearch
-                  ? "w-[200px] lg:w-[300px] xl:w-[400px] -translate-x-[80%]"
+                  ? "w-[200px] lg:w-[300px] xl:w-[400px] -translate-x-[50%]"
                   : "w-[160px] "
               }transition-all duration-700 ease-in-out h-[40px] bg-secondary1/10 p-2 rounded-full text-center font-kohoe focus:outline-none focus:border-none hover:bg-secondary1/20`}
               type="text"
@@ -147,7 +148,7 @@ export default function Navbar() {
 
     {/* navbar mobile */}
     <div className="md:hidden 	">
-        <div className="navbar-mobile h-[80px] container flex items-center justify-between  ">
+        <div className="navbar-mobile h-[80px] container flex items-center justify-between  overflow-x-hidden">
             <div className="icon-menu">
                 {showMobileNavbar ? (
                 <img onClick={()=> setShowMobileNavbar(false)} className="cursor-pointer" src="./images/menu-ca.png" alt="" />
@@ -155,14 +156,21 @@ export default function Navbar() {
                     <img onClick={()=> setShowMobileNavbar(true)} className="cursor-pointer" src="./images/menu-can.png" alt="" />
                 )}
             </div>
-            <div className="logo">
-                <img src="./images/Frame 2.png" alt="" />
+            <div className="logo flex translate-x-20">
+                <img className={`${showMobileSearch ? 'opacity-0 invisible' : 'opacity-100 visible'} transition-all duration-700 ease-in-out`} src="./images/Frame 2.png" alt="" />
+                <input className={`${showMobileSearch ? '-translate-x-32 visible opacity-100' : 'translate-x-24 invisible opacity-0'} transition-all duration-700 ease-in-out w-[200px] h-[40px] text-center bg-secondary1/10 rounded-full p-2 focus:outline-none `} type="text" />
+                <img
+              className={`${showMobileSearch ? 'opacity-100 visible' : 'opacity-0 invisible'} transition-all duration-[1200ms] ease-in-ou absolute top-2 left-2`}
+              src="./images/search.png"
+              alt=""
+            />
             </div>
-            <div className="search">
-                <img src="./images/Frame 9.png" alt="" />
+            
+            <div className={`${showMobileSearch ? '-translate-x-80 invisible opacity-0' : 'translate-x-0 visible opacity-100'} search transition-all duration-700 ease-in-out flex items-center justify-center`}>
+                <img onClick={()=>setShowMobileSearch(true)} src="./images/Frame 9.png" alt="" />
             </div>
         </div>
-        <div className={`${showMobileNavbar ? 'top-[83px] h-0 ' : 'top-[83px] h-[710px] '} transition-all duration-700 ease-in-out bg-primary1  sub-menu  absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden pt-[20px]`}>
+        <div className={`${showMobileNavbar ? 'top-[83px] h-0 ' : 'top-[83px] h-[600px] '} transition-all duration-700 ease-in-out bg-primary1  sub-menu  absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden mt-[5px]`}>
         <div className="top flex items-center justify-between container">
           {!showMobileNavbar ? (
 
@@ -201,8 +209,8 @@ export default function Navbar() {
         animate={{ opacity: 1, y: 0 ,  }}
         transition={{  stiffness: 100 , delay:1 }}
         className="middel mt-5 flex flex-col items-center">
-            <h1 className="text-center font-kohob text-secondary1">SHOP</h1>
-            <p className="text-secondary1 font-kohob border-solid border-b-2 border-secondary1 text-center">
+            <h1 className="text-center font-kohob text-secondary1 mb-2">SHOP</h1>
+            <p className="text-secondary1 font-kohob border-solid border-b-2 border-secondary1 text-center mb-1">
               MEN
             </p>
             <ul className="pl-0 font-kohol flex flex-col items-center">
@@ -211,7 +219,7 @@ export default function Navbar() {
               <li className="hover:font-kohob cursor-pointer">running</li>
               <li className="hover:font-kohob cursor-pointer">football</li>
             </ul>
-            <p className="text-secondary1 font-kohob border-solid border-b-2 border-secondary1">
+            <p className="text-secondary1 font-kohob border-solid border-b-2 border-secondary1 mb-1 mt-2">
               women
             </p>
             <ul className="pl-0 font-kohol flex flex-col items-center">
@@ -221,16 +229,19 @@ export default function Navbar() {
               <li className="hover:font-kohob cursor-pointer">football</li>
             </ul>
             <div className="question">
-                <p className="text-center font-kohob">Have a question or need assistance?</p>
+                <p className="text-center font-kohob mt-2">Have a question or need assistance?</p>
                 <p className="text-center font-kohol">Our dedicated customer service team is here to help.</p>
-                <div className="flex items-center justify-center"><textarea className="bg-secondary1/10 w-[300px] h-[100px] rounded-lg focus:outline-none p-2" placeholder="Text"></textarea></div>
-                <div className="flex items-center justify-center"><button className="w-[140px] h-[40px] flex items-center justify-center border-solid border-2 border-primary2 rounded-full">SEND</button></div>
-                <p>© 2024 WalkWave</p>
+                <div className="flex items-center justify-center mt-2"><textarea className="bg-secondary1/10 font-kohol w-[300px] h-[100px] rounded-lg focus:outline-none p-2" placeholder="Text"></textarea></div>
+                <div className="flex items-center justify-center mt-2"><button className="w-[140px] font-kohob h-[40px] flex items-center justify-center border-solid border-2 border-primary2 rounded-full">SEND</button></div>
+                <p className="text-center mt-3 font-kohol">© 2024 <span className="font-kohob">WalkWave</span></p>
             </div>
         </motion.div>
         ) : (
           <></>
         )}
+        </div>
+        <div>
+
         </div>
     </div>
     </>

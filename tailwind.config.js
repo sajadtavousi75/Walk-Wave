@@ -9,6 +9,23 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container:{
+      screens:{
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1440px',
+      },
+      center: true,
+      padding: {
+        DEFAULT: "1rem",
+        sm: "2rem",
+        lg: "2.65rem",
+        xl: "3.25rem",
+        "2xl": "3.5rem"
+      },
+    },
     extend: {
       colors:{
         primary1:'#fff',
@@ -20,6 +37,13 @@ module.exports = {
         kohob:['kohob'],
         kohol:['kohol'],
         quikr:['quikr']
+      },
+      margin:{
+        '0':'0',
+        'auto':'auto',
+      },
+      padding:{
+        '0':'0'
       }
     },
   },
