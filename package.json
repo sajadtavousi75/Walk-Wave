@@ -15,7 +15,10 @@
     "normalize.css": "^8.0.1",
     "react": "^18",
     "react-dom": "^18",
-    "reset-css": "^5.0.2"
+    "react-slick": "^0.30.2",
+    "reset-css": "^5.0.2",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^11.0.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",

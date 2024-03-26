@@ -114,7 +114,7 @@ export default function Navbar() {
       <div
         className={`${
           resultSearch ? "top-24 h-[250px]" : "top-24 h-0"
-        } transition-all duration-700 ease-in-out w-[100%]  bg-secondary1 absolute z-0 `}
+        } transition-all duration-700 ease-in-out w-[100%]  bg-secondary1 absolute z-10 `}
       ></div>
       <div
         onMouseEnter={() => setShowShop(true)}
@@ -123,7 +123,7 @@ export default function Navbar() {
           showShop
             ? "top-24 h-[200px] opacity-100 visible"
             : "top-24 h-0 opacity-0 invisible"
-        } transition-all duration-700 ease-in-out w-[100%]  bg-primary1 shadow-lg absolute z-0 `}
+        } transition-all duration-700 ease-in-out w-[100%]  bg-primary1 shadow-lg absolute z-10 `}
       >
         <div className="flex items-center justify-center gap-[100px] mr-24">
           <div>
