@@ -182,7 +182,7 @@ export default function Navbar() {
                 <img onClick={()=>setShowMobileSearch(true)} src="./images/Frame 9.png" alt="" />
             </div>
         </div>
-        <div className={`${showMobileNavbar ? 'top-[83px] h-0 ' : 'top-[83px] h-[600px] '} transition-all duration-700 ease-in-out bg-primary1  sub-menu  absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden mt-[5px]`}>
+        <div className={`${showMobileNavbar ? 'top-[83px] h-0 ' : 'top-[83px] h-[600px] '} transition-all duration-700 ease-in-out bg-primary1  sub-menu  absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden mt-[5px] z-10`}>
         <div className="top flex items-center justify-between container">
           {!showMobileNavbar ? (
 
@@ -252,7 +252,7 @@ export default function Navbar() {
           <></>
         )}
         </div>
-        <div className={`${showMobileSearchResult ? 'top-[79px] h-[600px]' : 'top-[79px] h-0'} transition-all duration-700 ease-in-out bg-primary1   absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden mt-[5px]`}>
+        <div className={`${showMobileSearchResult ? 'top-[79px] h-[600px]' : 'top-[79px] h-0'} transition-all duration-700 ease-in-out bg-primary1   absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden mt-[5px] z-10`}>
 
         </div>
     </div>
