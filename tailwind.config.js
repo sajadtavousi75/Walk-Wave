@@ -32,6 +32,7 @@ module.exports = {
         primary:'#000',
         secondary1:'#008080',
         secondary2:'#A62639',
+        box: '#f6f6f6'
       },
       fontFamily:{
         kohob:['kohob'],

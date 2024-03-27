@@ -1,4 +1,5 @@
 import Navbar from "@/component/modules/Navbar/Navbar";
+import NewProducts from "@/component/templates/Index/NewProducts/NewProducts";
 import SliderHeader from "@/component/templates/Index/Slider/SliderHeader";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
     </div>
       <SliderHeader />
+      <NewProducts />
     </>
   );
 }
