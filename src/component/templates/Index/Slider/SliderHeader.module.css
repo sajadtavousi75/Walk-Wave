@@ -1,0 +1,28 @@
+.animate
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    0deg,
+    #fff 0%,
+    #fff 85%,
+    #000 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      /* font-size: 30px; */
+      font-family: 'kohob';
+}
+
+@keyframes textclip {
+  to {
+    background-position: center 500px;
+  }
+}
