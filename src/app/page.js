@@ -1,4 +1,5 @@
 import Navbar from "@/component/modules/Navbar/Navbar";
+import ChildrensCollection from "@/component/templates/Index/ChildrensCollection/ChildrensCollection";
 import NewProducts from "@/component/templates/Index/NewProducts/NewProducts";
 import SliderHeader from "@/component/templates/Index/Slider/SliderHeader";
 
@@ -10,6 +11,7 @@ export default function Home() {
     </div>
       <SliderHeader />
       <NewProducts />
+      <ChildrensCollection />
     </>
   );
 }
