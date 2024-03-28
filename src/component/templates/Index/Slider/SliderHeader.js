@@ -23,7 +23,6 @@ export default function SliderHeader() {
       setChangeSlide(false)
     }, 2000);
 
-    console.log(changeSlide)
   }
 
   return (
