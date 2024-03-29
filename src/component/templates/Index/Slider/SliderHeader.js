@@ -30,7 +30,7 @@ export default function SliderHeader() {
       rewind={true}
       // navigation={true}
       loop={true}
-      autoplay={{ delay: 1800 }}
+      autoplay={{ delay: 3000 }}
       modules={[Navigation, Autoplay]}
       mousewheel={{enabled: false}} 
       onSlideChange={handelSlide}
@@ -47,7 +47,7 @@ export default function SliderHeader() {
           src="./images/slider/1.png"
           alt="Slide"
         />
-        <div className=" hidden w-[30px] h-[100%] xl:flex flex-col items-center gap-2 font-kohol text-[23px] text-primary1 absolute  top-0 left-48 z-10">
+        <div className=" hidden w-[30px] h-[100%] xl:flex flex-col items-center gap-2 font-kohol text-[23px] bg-primary/15 px-2 text-primary1 absolute  top-0 left-48 z-10">
           <h1 className={styles.animate}>
             N <br />I <br />K <br /> E  <br /> <br /> A <br /> I <br /> R <br /> M <br /> A <br /> X  <br /> D <br />R <br /> I <br /> F <br /> T
           </h1>
@@ -57,14 +57,14 @@ export default function SliderHeader() {
         <img
         className="hidden sm:block w-[100%] xl:h-[550px]"
           src="./images/slider/slide3.png"
-          alt="Slide"
+          alt="Slide" 
         />
         <img
         className="w-[100%] sm:hidden"
           src="./images/slider/2.png"
           alt="Slide"
         />
-        <div className="hidden w-[30px] h-[100%] xl:flex flex-col items-center gap-2 font-kohol text-[31px] text-primary1 absolute  top-0 left-48 z-10">
+        <div className="hidden w-[30px] h-[100%] xl:flex flex-col items-center gap-2 font-kohol text-[31px] bg-primary/15 px-2 text-primary1 absolute  top-0 left-48 z-10">
           <h1 className={styles.animate}>
             N <br />I <br />K <br /> E  <br /> <br /> A <br /> I <br /> R <br /> M <br /> A <br /> X <br />1
           </h1>
@@ -81,7 +81,7 @@ export default function SliderHeader() {
           src="./images/slider/4.png"
           alt="Slide"
         />
-        <div className="hidden w-[30px] h-[100%] xl:flex flex-col items-center gap-2 font-kohol text-[31px] text-primary1 absolute  top-0 left-48 z-10">
+        <div className="hidden w-[30px] h-[100%] xl:flex flex-col items-center gap-2 font-kohol text-[31px] bg-primary/15 px-2 text-primary1 absolute  top-0 left-48 z-10">
           <h1 className={styles.animate}>
             N <br />I <br />K <br /> E  <br /> <br /> D<br /> U <br /> N <br /> K <br /> L <br /> O <br />W
           </h1>
