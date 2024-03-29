@@ -2,6 +2,7 @@ import Navbar from "@/component/modules/Navbar/Navbar";
 import Banner from "@/component/templates/Index/Banner/Banner";
 import ChildrensCollection from "@/component/templates/Index/ChildrensCollection/ChildrensCollection";
 import NewProducts from "@/component/templates/Index/NewProducts/NewProducts";
+import Offer from "@/component/templates/Index/Offer/Offer";
 import SliderHeader from "@/component/templates/Index/Slider/SliderHeader";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <NewProducts />
       <ChildrensCollection />
       <Banner />
+      <Offer />
     </>
   );
 }
