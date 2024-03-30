@@ -26,6 +26,7 @@ export default function SliderHeader() {
   }
 
   return (
+    <div className="mt-[90px]">
     <Swiper
       rewind={true}
       // navigation={true}
@@ -88,5 +89,6 @@ export default function SliderHeader() {
         </div>
       </SwiperSlide>
     </Swiper>
+    </div>
   )
 }

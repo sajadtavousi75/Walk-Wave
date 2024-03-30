@@ -27,7 +27,7 @@ export default function Navbar() {
   return (
     <>
     {/* navbar desktab */}
-    <div className="hidden md:flex">
+    <div className="hidden md:flex ">
       <div className=" navbar h-[80px] container   flex items-center justify-between z-10 bg-primary1  overflow-x-hidden">
         <div className="navbar-logo">
           <img src="./images/Frame 2.png" alt="" />
