@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {motion} from 'framer-motion'
 
 export default function Navbar() {
@@ -24,6 +24,21 @@ export default function Navbar() {
     setShowMobileSearch(false)
     setShowMobileSearchResult(false)
   }
+
+  useEffect(()=>{
+    if (!showMobileNavbar ) {
+      document.body.style.overflow = 'hidden';
+  } else {
+      document.body.style.overflow = 'auto';
+  }
+  },[showMobileNavbar])
+  useEffect(()=>{
+    if (showMobileSearchResult ) {
+      document.body.style.overflow = 'hidden';
+  } else {
+      document.body.style.overflow = 'auto';
+  }
+  },[showMobileSearchResult])
   return (
     <>
     {/* navbar desktab */}
@@ -157,7 +172,7 @@ export default function Navbar() {
         <div className="navbar-mobile h-[80px] container flex items-center justify-between  overflow-x-hidden">
           {showMobileSearch ? (
             <div className="icon-menu">
-                    <img onClick={handelMobile} className="cursor-pointer" src="./images/menu-can.png" alt="" />
+                    <img onClick={handelMobile}  className="cursor-pointer" src="./images/menu-can.png" alt="" />
             </div>
           ) : (
             <div className="icon-menu">
@@ -182,7 +197,7 @@ export default function Navbar() {
                 <img onClick={()=>setShowMobileSearch(true)} src="./images/Frame 9.png" alt="" />
             </div>
         </div>
-        <div className={`${showMobileNavbar ? 'top-[83px] h-0 ' : 'top-[83px] h-[600px] '} transition-all duration-700 ease-in-out bg-primary1  sub-menu  absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden mt-[5px] z-10`}>
+        <div className={`${showMobileNavbar ? 'top-[78px] h-0 ' : 'top-[78px] h-[100vh] '} transition-all duration-700 ease-in-out bg-primary1  sub-menu  absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden mt-[5px] z-10`}>
         <div className="top flex items-center justify-between container">
           {!showMobileNavbar ? (
 
@@ -252,7 +267,7 @@ export default function Navbar() {
           <></>
         )}
         </div>
-        <div className={`${showMobileSearchResult ? 'top-[79px] h-[600px]' : 'top-[79px] h-0'} transition-all duration-700 ease-in-out bg-primary1   absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden mt-[5px] z-10`}>
+        <div className={`${showMobileSearchResult ? 'top-[78px] h-[100vh]' : 'top-[78px] h-0'} transition-all duration-700 ease-in-out bg-primary1   absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden mt-[5px] z-10`}>
 
         </div>
     </div>
