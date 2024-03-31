@@ -14,6 +14,7 @@ export default function Home() {
     <div className=" border-solid border-b-4 border-secondary1 bg-primary1 fixed top-0 left-0 right-0 z-50 ">
       <Navbar />
     </div>
+      <div className="main">
       <SliderHeader />
       <NewProducts />
       <ChildrensCollection />
@@ -22,6 +23,7 @@ export default function Home() {
       <Production />
       <Introduction />
       <Footer />
+      </div>
     </>
   );
 }
