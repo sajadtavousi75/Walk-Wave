@@ -1,9 +1,24 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 export default function Sidebar() {
+  const [showGender, setShowGender] = useState(false);
+  const [showPrice , setShowPrice] = useState(false)
+  const [showSize , setShowSize] = useState(false)
+  const [showSort , setShowSort] = useState(false)
+  const [priceMin , setPriceMin] = useState(0)
+  const [priceMax , setPriceMax] = useState(2000)
+  const [genderIndex , setGenderIndex]= useState(null)
+  const [genderValue , setGenderValue]= useState('ALL')
+  const [sortIndex , setSortIndex]= useState(null)
+  const [sortValue , setSortValue]= useState('')
+  const [categoryIndex , setCategoryIndex]= useState(null)
+  const [categoryValue , setCategoryValue]= useState('All')
+  const [sizeIndex , setSizeIndex]= useState(null)
+  const [sizeValue , setSizeValue]= useState('All')
   return (
-    <div className="sidebar">
-      <div className="filter">
+    <div className="sidebar w-[150px]">
+      <div className="filter flex items-center justify-between">
         <svg
           width="28"
           height="25"
@@ -48,7 +63,257 @@ export default function Sidebar() {
             fill="#008080"
           />
         </svg>
-        <h1>FILTER</h1>
+        <h1 className="font-kohob text-[24px]">FILTER</h1>
+      </div>
+      <div className="sort mt-8">
+        <div className="title flex items-center justify-between">
+          <h1 className="font-kohob">SORT BY</h1>
+          <svg
+            className={`${showSort ? 'hidden' : ''} transition-all duration-700 ease-in-out cursor-pointer	`}
+            onClick={() => {
+              setShowSort(true)
+              setShowPrice(false)
+              setShowSize(false)
+              setShowGender(false)
+            }}
+            width="22"
+            height="13"
+            viewBox="0 0 22 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.25874 0.827334L1.25872 0.827353C0.580427 1.57502 0.580424 2.77818 1.25872 3.52583L1.25881 3.52592L8.67355 11.6906C8.67355 11.6906 8.67356 11.6906 8.67356 11.6906C9.95664 13.1036 12.0469 13.103 13.3294 11.6895L13.3294 11.6895L20.7413 3.51982C21.4196 2.77217 21.4196 1.569 20.7413 0.821322C20.0502 0.0595593 18.9187 0.0595596 18.2276 0.821322L11.8838 7.81364L11.8838 7.81367C11.3912 8.35679 10.6034 8.35679 10.1108 7.81367L10.1108 7.81364L3.7724 0.827358C3.7724 0.827355 3.77239 0.827352 3.77239 0.827349C3.08132 0.0655723 1.94993 0.0656112 1.25874 0.827334Z"
+              stroke="black"
+              stroke-width="0.5"
+            />
+          </svg>
+          <svg
+          className={`${!showSort ? 'hidden' : ''} transition-all duration-700 ease-in-out cursor-pointer	`}
+          onClick={()=> setShowSort(false)}
+            width="20"
+            height="13"
+            viewBox="0 0 20 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19.5561 12.0047C20.148 11.3523 20.148 10.2945 19.5561 9.64215L12.1414 1.47746C10.9575 0.17376 9.03909 0.174262 7.85571 1.47847L0.443903 9.64816C-0.147968 10.3005 -0.147968 11.3583 0.443903 12.0107C1.03579 12.6631 1.9954 12.6631 2.58729 12.0107L8.93103 5.01838C9.52287 4.36586 10.4825 4.36586 11.0744 5.01838L17.4128 12.0047C18.0046 12.6571 18.9641 12.6571 19.5561 12.0047Z"
+              fill="#008080"
+            />
+          </svg>
+        </div>
+        <p className="font-kohol text-[14px] text-secondary1">{sortValue}</p>
+        <div
+          className={`${
+            showSort
+              ? "h-[80px] visible opacity-100"
+              : "h-0 invisible opacity-0"
+          } transition-all duration-700 ease-in-out list mt-4 bg-primary1  `}
+        >
+          <ul className="font-kohol ">
+            {['Newest' , 'price: high-low' , 'price: low-high'].map((item , index) =>(
+              <li onClick={(event) =>{
+                setSortIndex(index)
+                setSortValue(event.target.innerText)
+              }} className={`${sortIndex === index ? 'font-kohob text-secondary1' : ''} hover:font-kohob`}>{item}</li>
+            ))}
+            {/* <li className="hover:font-kohob">Newest</li>
+            <li className="hover:font-kohob">price: high-low</li>
+            <li className="hover:font-kohob">price: low-high</li> */}
+          </ul>
+        </div>
+      </div>
+      <div className="gender mt-2">
+        <div className="title flex items-center justify-between">
+          <h1 className="font-kohob">GENDER</h1>
+          <svg
+            className={`${showGender ? 'hidden' : ''} transition-all duration-700 ease-in-out cursor-pointer	`}
+            onClick={() => {
+              setShowGender(true)
+              setShowPrice(false)
+              setShowSize(false)
+              setShowSort(false)
+            }}
+            width="22"
+            height="13"
+            viewBox="0 0 22 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.25874 0.827334L1.25872 0.827353C0.580427 1.57502 0.580424 2.77818 1.25872 3.52583L1.25881 3.52592L8.67355 11.6906C8.67355 11.6906 8.67356 11.6906 8.67356 11.6906C9.95664 13.1036 12.0469 13.103 13.3294 11.6895L13.3294 11.6895L20.7413 3.51982C21.4196 2.77217 21.4196 1.569 20.7413 0.821322C20.0502 0.0595593 18.9187 0.0595596 18.2276 0.821322L11.8838 7.81364L11.8838 7.81367C11.3912 8.35679 10.6034 8.35679 10.1108 7.81367L10.1108 7.81364L3.7724 0.827358C3.7724 0.827355 3.77239 0.827352 3.77239 0.827349C3.08132 0.0655723 1.94993 0.0656112 1.25874 0.827334Z"
+              stroke="black"
+              stroke-width="0.5"
+            />
+          </svg>
+          <svg
+          className={`${!showGender ? 'hidden' : ''} transition-all duration-700 ease-in-out cursor-pointer	`}
+          onClick={()=> setShowGender(false)}
+            width="20"
+            height="13"
+            viewBox="0 0 20 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19.5561 12.0047C20.148 11.3523 20.148 10.2945 19.5561 9.64215L12.1414 1.47746C10.9575 0.17376 9.03909 0.174262 7.85571 1.47847L0.443903 9.64816C-0.147968 10.3005 -0.147968 11.3583 0.443903 12.0107C1.03579 12.6631 1.9954 12.6631 2.58729 12.0107L8.93103 5.01838C9.52287 4.36586 10.4825 4.36586 11.0744 5.01838L17.4128 12.0047C18.0046 12.6571 18.9641 12.6571 19.5561 12.0047Z"
+              fill="#008080"
+            />
+          </svg>
+        </div>
+        <p className="font-kohol text-[14px] text-secondary1">{genderValue}</p>
+        <div
+          className={`${
+            showGender
+              ? "h-[80px] visible opacity-100"
+              : "h-0 invisible opacity-0"
+          } transition-all duration-700 ease-in-out list mt-4 bg-primary1  `}
+        >
+          <ul className="font-kohol ">
+            {['ALL' , 'MEN' , 'WOMEN'].map((item ,index)=>(
+              <li onClick={(event)=> {
+                setGenderIndex(index)
+                setGenderValue(event.target.innerText)
+              }} key={index} className={`${genderIndex === index ? 'font-kohob text-secondary1' : ''} hover:font-kohob cursor-pointer`}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="category mt-4">
+        <ul className="font-kohol w-[55px]">
+          {['ALL' , 'lifestyle' , 'running' , 'football'].map((item , index)=>(
+            <li onClick={(event)=>{
+              setCategoryIndex(index)
+              setCategoryValue(event.target.innerText)
+            }} className={`${categoryIndex === index ? 'font-kohob text-secondary1' : ''} cursor-pointer	 hover:font-kohob`}>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div className="price mt-8">
+      <div className="title flex items-center justify-between">
+          <h1 className="font-kohob">Price Range</h1>
+          <svg
+            className={`${showPrice ? 'hidden' : ''} transition-all duration-700 ease-in-out cursor-pointer	`}
+            onClick={() => {
+              setShowPrice(true)
+              setShowGender(false)
+              setShowSize(false)
+              setShowSort(false)
+            }}
+            width="22"
+            height="13"
+            viewBox="0 0 22 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.25874 0.827334L1.25872 0.827353C0.580427 1.57502 0.580424 2.77818 1.25872 3.52583L1.25881 3.52592L8.67355 11.6906C8.67355 11.6906 8.67356 11.6906 8.67356 11.6906C9.95664 13.1036 12.0469 13.103 13.3294 11.6895L13.3294 11.6895L20.7413 3.51982C21.4196 2.77217 21.4196 1.569 20.7413 0.821322C20.0502 0.0595593 18.9187 0.0595596 18.2276 0.821322L11.8838 7.81364L11.8838 7.81367C11.3912 8.35679 10.6034 8.35679 10.1108 7.81367L10.1108 7.81364L3.7724 0.827358C3.7724 0.827355 3.77239 0.827352 3.77239 0.827349C3.08132 0.0655723 1.94993 0.0656112 1.25874 0.827334Z"
+              stroke="black"
+              stroke-width="0.5"
+            />
+          </svg>
+          <svg
+          className={`${!showPrice ? 'hidden' : ''} transition-all duration-700 ease-in-out cursor-pointer	`}
+          onClick={()=> setShowPrice(false)}
+            width="20"
+            height="13"
+            viewBox="0 0 20 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19.5561 12.0047C20.148 11.3523 20.148 10.2945 19.5561 9.64215L12.1414 1.47746C10.9575 0.17376 9.03909 0.174262 7.85571 1.47847L0.443903 9.64816C-0.147968 10.3005 -0.147968 11.3583 0.443903 12.0107C1.03579 12.6631 1.9954 12.6631 2.58729 12.0107L8.93103 5.01838C9.52287 4.36586 10.4825 4.36586 11.0744 5.01838L17.4128 12.0047C18.0046 12.6571 18.9641 12.6571 19.5561 12.0047Z"
+              fill="#008080"
+            />
+          </svg>
+        </div>
+        <p className="font-kohol text-[14px] text-secondary1">{`${priceMin}-${priceMax}`}</p>
+        <div className={`${
+            showPrice
+              ? "h-[165px] visible opacity-100"
+              : "h-0 invisible opacity-0"
+          } transition-all duration-700 ease-in-out price-range mt-4 bg-primary1  `}>
+          <div className="price-min mt-4">
+            <p className="font-kohob text-[14px] text-secondary1">min</p>
+            <input onChange={(event) => setPriceMin(event.target.value)} className="bg-secondary1" type="range" min={0} max={2000} value={priceMin} />
+          </div>
+          <div className="price-max">
+            <p className="font-kohob text-[14px] text-secondary1">max</p>
+            <input onChange={(event) => setPriceMax(event.target.value)} className="bg-secondary1" type="range" min={0} max={2000}value={priceMax}/>
+          </div>
+          <div className="show-price flex items-center justify-between gap-4">
+            <span className="w-[70px] h-[40px] flex items-center justify-center rounded-full bg-secondary1/10 font-kohob text-[14px]">0</span>
+            <span className="w-[70px] h-[40px] flex items-center justify-center rounded-full bg-secondary1/10 font-kohob text-[14px]">2000</span>
+          </div>
+          <h1 className="text-center font-kohob text-secondary1 mt-2">{`${priceMin}-${priceMax}`}</h1>
+        </div>
+      </div>
+      <div className="size mt-2">
+      <div className="title flex items-center justify-between">
+          <h1 className="font-kohob">Size</h1>
+          <svg
+            className={`${showSize ? 'hidden' : ''} transition-all duration-700 ease-in-out cursor-pointer	`}
+            onClick={() => {
+              setShowSize(true)
+              setShowGender(false)
+              setShowPrice(false)
+              setShowSort(false)
+            }}
+            width="22"
+            height="13"
+            viewBox="0 0 22 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.25874 0.827334L1.25872 0.827353C0.580427 1.57502 0.580424 2.77818 1.25872 3.52583L1.25881 3.52592L8.67355 11.6906C8.67355 11.6906 8.67356 11.6906 8.67356 11.6906C9.95664 13.1036 12.0469 13.103 13.3294 11.6895L13.3294 11.6895L20.7413 3.51982C21.4196 2.77217 21.4196 1.569 20.7413 0.821322C20.0502 0.0595593 18.9187 0.0595596 18.2276 0.821322L11.8838 7.81364L11.8838 7.81367C11.3912 8.35679 10.6034 8.35679 10.1108 7.81367L10.1108 7.81364L3.7724 0.827358C3.7724 0.827355 3.77239 0.827352 3.77239 0.827349C3.08132 0.0655723 1.94993 0.0656112 1.25874 0.827334Z"
+              stroke="black"
+              stroke-width="0.5"
+            />
+          </svg>
+          <svg
+          className={`${!showSize ? 'hidden' : ''} transition-all duration-700 ease-in-out cursor-pointer	`}
+          onClick={()=> setShowSize(false)}
+            width="20"
+            height="13"
+            viewBox="0 0 20 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19.5561 12.0047C20.148 11.3523 20.148 10.2945 19.5561 9.64215L12.1414 1.47746C10.9575 0.17376 9.03909 0.174262 7.85571 1.47847L0.443903 9.64816C-0.147968 10.3005 -0.147968 11.3583 0.443903 12.0107C1.03579 12.6631 1.9954 12.6631 2.58729 12.0107L8.93103 5.01838C9.52287 4.36586 10.4825 4.36586 11.0744 5.01838L17.4128 12.0047C18.0046 12.6571 18.9641 12.6571 19.5561 12.0047Z"
+              fill="#008080"
+            />
+          </svg>
+        </div>
+        <p className="font-kohol text-[14px] text-secondary1">{sizeValue}</p>
+        <div className={`${showSize ? 'h-[150px] opacity-100 visible' : 'h-0 opacity-0 invisible'} transition-all duration-700 ease-in-out size-number mt-4 flex items-center justify-between`}>
+          <ul className="font-kohol ">
+            {['ALL' , '35' , '38' , '40.5', '43', '47'].map((item , index)=>(
+              <li onClick={(event) =>{
+                setSizeIndex(index)
+                setSizeValue(event.target.innerText)
+              }} className={`${sizeIndex === index ? 'font-kohob text-secondary1' : ''} cursor-pointer	`} key={index}>{item}</li>
+            ))}
+          </ul>
+          <ul className="font-kohol ">
+            {['36' , '39' , '41' , '44.5', '48', '51.5'].map((item , index)=>(
+              <li onClick={(event) =>{
+                setSizeIndex(index)
+                setSizeValue(event.target.innerText)
+              }} className={`${sizeIndex === index ? 'font-kohob text-secondary1' : ''} cursor-pointer	`} key={index}>{item}</li>
+            ))}
+          </ul>
+          <ul className="font-kohol ">
+            {['37.5' , '40' , '42' , '45.5', '50', '52'].map((item , index)=>(
+              <li onClick={(event) =>{
+                setSizeIndex(index)
+                setSizeValue(event.target.innerText)
+              }} className={`${sizeIndex === index ? 'font-kohob text-secondary1' : ''} cursor-pointer	`} key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
