@@ -288,25 +288,9 @@ export default function Sidebar() {
           </svg>
         </div>
         <p className="font-kohol text-[14px] text-secondary1">{sizeValue}</p>
-        <div className={`${showSize ? 'h-[150px] opacity-100 visible' : 'h-0 opacity-0 invisible'} transition-all duration-700 ease-in-out size-number mt-4 flex items-center justify-between`}>
-          <ul className="font-kohol ">
-            {['ALL' , '35' , '38' , '40.5', '43', '47'].map((item , index)=>(
-              <li onClick={(event) =>{
-                setSizeIndex(index)
-                setSizeValue(event.target.innerText)
-              }} className={`${sizeIndex === index ? 'font-kohob text-secondary1' : ''} cursor-pointer	`} key={index}>{item}</li>
-            ))}
-          </ul>
-          <ul className="font-kohol ">
-            {['36' , '39' , '41' , '44.5', '48', '51.5'].map((item , index)=>(
-              <li onClick={(event) =>{
-                setSizeIndex(index)
-                setSizeValue(event.target.innerText)
-              }} className={`${sizeIndex === index ? 'font-kohob text-secondary1' : ''} cursor-pointer	`} key={index}>{item}</li>
-            ))}
-          </ul>
-          <ul className="font-kohol ">
-            {['37.5' , '40' , '42' , '45.5', '50', '52'].map((item , index)=>(
+        <div className={`${showSize ? 'h-[150px] opacity-100 visible' : 'h-0 opacity-0 invisible'} transition-all duration-700 ease-in-out size-number mt-4 `}>
+          <ul className="font-kohol grid grid-cols-3 ">
+            {['ALL' , '35' , '36' , '37.5', '38', '39' , '40' , '40.5' , '41' , '42' , '43' , '44.5' , '45.5' , '47' , '48' , '50' , '51' , '51.5'].map((item , index)=>(
               <li onClick={(event) =>{
                 setSizeIndex(index)
                 setSizeValue(event.target.innerText)
