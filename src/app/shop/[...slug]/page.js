@@ -1,5 +1,6 @@
 import Footer from '@/component/modules/Footer/Footer'
 import Navbar from '@/component/modules/Navbar/Navbar'
+import ProductBoxes from '@/component/templates/Shop/ProductBoxes/ProductBoxes'
 import Sidebar from '@/component/templates/Shop/Sidebar/Sidebar'
 import React from 'react'
 
@@ -9,8 +10,9 @@ export default function shop() {
     <div className=" border-solid border-b-4 border-secondary1  fixed top-0 left-0 right-0 z-50 ">
       <Navbar />
     </div>
-    <div className="main container mt-[90px]">
+    <div className="main container mt-[90px] flex  justify-between relative">
         <Sidebar />
+        <ProductBoxes />
     </div>
         <Footer />
     </>

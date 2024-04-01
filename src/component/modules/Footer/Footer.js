@@ -3,7 +3,7 @@ import styles from "./Footer.module.css";
 
 export default function Footer() {
   return (
-    <div className="footer container  mt-24 py-16 border-solid border-t-2 border-secondary1">
+    <div className="footer container  mt-12 py-16 border-solid border-t-2 border-secondary1">
       <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
         <div className="flex items-center justify-between gap-8">
         <div className="link flex flex-col items-start justify-start gap-8">

@@ -17,7 +17,7 @@ export default function Sidebar() {
   const [sizeIndex , setSizeIndex]= useState(null)
   const [sizeValue , setSizeValue]= useState('All')
   return (
-    <div className="sidebar w-[150px]">
+    <div className="sidebar w-[150px] h-[100vh]  sticky top-[100px] ">
       <div className="filter flex items-center justify-between">
         <svg
           width="28"
@@ -65,7 +65,7 @@ export default function Sidebar() {
         </svg>
         <h1 className="font-kohob text-[24px]">FILTER</h1>
       </div>
-      <div className="sort mt-8">
+      <div className="sort mt-4">
         <div className="title flex items-center justify-between">
           <h1 className="font-kohob">SORT BY</h1>
           <svg
@@ -116,7 +116,7 @@ export default function Sidebar() {
               <li onClick={(event) =>{
                 setSortIndex(index)
                 setSortValue(event.target.innerText)
-              }} className={`${sortIndex === index ? 'font-kohob text-secondary1' : ''} hover:font-kohob`}>{item}</li>
+              }} className={`${sortIndex === index ? 'font-kohob text-secondary1' : ''} cursor-pointer hover:font-kohob`}>{item}</li>
             ))}
             {/* <li className="hover:font-kohob">Newest</li>
             <li className="hover:font-kohob">price: high-low</li>
@@ -180,7 +180,7 @@ export default function Sidebar() {
           </ul>
         </div>
       </div>
-      <div className="category mt-4">
+      <div className="category mt-2">
         <ul className="font-kohol w-[55px]">
           {['ALL' , 'lifestyle' , 'running' , 'football'].map((item , index)=>(
             <li onClick={(event)=>{
@@ -190,7 +190,7 @@ export default function Sidebar() {
           ))}
         </ul>
       </div>
-      <div className="price mt-8">
+      <div className="price mt-4">
       <div className="title flex items-center justify-between">
           <h1 className="font-kohob">Price Range</h1>
           <svg
