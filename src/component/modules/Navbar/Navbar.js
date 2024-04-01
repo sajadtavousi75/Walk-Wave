@@ -235,7 +235,7 @@ export default function Navbar() {
       </div>
 
       {/* navbar mobile */}
-      <div className="md:hidden 	">
+      <div className="md:hidden 	bg-primary1">
         <div className="navbar-mobile h-[80px] container flex items-center justify-between  overflow-x-hidden">
           {showMobileSearch ? (
             <div className="icon-menu">

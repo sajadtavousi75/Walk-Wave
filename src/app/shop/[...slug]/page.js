@@ -10,7 +10,7 @@ export default function shop() {
     <div className=" border-solid border-b-4 border-secondary1  fixed top-0 left-0 right-0 z-50 ">
       <Navbar />
     </div>
-    <div className="main container mt-[90px] flex  justify-between relative">
+    <div className="main container-none md:container mt-[90px] md:flex  justify-between gap-2">
         <Sidebar />
         <ProductBoxes />
     </div>
