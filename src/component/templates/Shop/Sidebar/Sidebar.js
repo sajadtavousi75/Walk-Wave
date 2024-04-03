@@ -13,7 +13,7 @@ export default function Sidebar() {
   const [genderValue, setGenderValue] = useState("ALL");
   const [sortIndex, setSortIndex] = useState(null);
   const [sortValue, setSortValue] = useState("");
-  const [categoryIndex, setCategoryIndex] = useState(null);
+  const [categoryIndex, setCategoryIndex] = useState(0);
   const [categoryValue, setCategoryValue] = useState("All");
   const [sizeIndex, setSizeIndex] = useState(null);
   const [sizeValue, setSizeValue] = useState("All");
