@@ -45,6 +45,9 @@ module.exports = {
       },
       padding:{
         '0':'0'
+      },
+      transitionProperty: {
+        'height': 'height'
       }
     },
   },
