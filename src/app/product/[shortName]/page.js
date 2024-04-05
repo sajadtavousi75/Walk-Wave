@@ -2,6 +2,8 @@ import React from 'react'
 import Navbar from '@/component/modules/Navbar/Navbar'
 import Footer from '@/component/modules/Footer/Footer'
 import Gallery from '@/component/templates/Product/Gallery/Gallery'
+import Description from '@/component/templates/Product/Description/Description'
+import Slider from '@/component/templates/Product/Slider/Slider'
 
 export default function Product() {
   return (
@@ -11,6 +13,8 @@ export default function Product() {
     </div>
     <div className="main mt-[90px] container">
         <Gallery />
+        <Description />
+        <Slider />
     </div>
     <Footer />
     </>

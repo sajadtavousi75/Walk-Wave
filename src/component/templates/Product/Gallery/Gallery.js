@@ -157,7 +157,7 @@ export default function Gallery() {
             </button>
           </div>
         </div>
-        <div className="reviews bg-secondary1/10 min-h-[135px] rounded-[24px] p-4">
+        <div className="reviews bg-secondary1/10 min-h-[135px] rounded-[24px] p-4 mt-2">
           <div className="top flex items-center justify-between">
             <h1 className="font-kohob text-[24px]">Reviews</h1>
             <span className="flex items-center justify-center gap-2 font-kohob text-[24px]">
@@ -183,8 +183,6 @@ export default function Gallery() {
               <div className="rate flex items-center justify-between w-[90%] mt-4 ">
                 <h1 className="font-kohol">Rate on a scale of <span className="font-kohob">1</span> to <span className="font-kohob">5</span> stars :</h1>
                 <div className="star flex items-center gap-2">
-                  {star === 5 && (
-                    <>
                 <svg
                 onClick={()=> setStar(1)}
                 width="22"
@@ -248,8 +246,6 @@ export default function Gallery() {
                   stroke="black"
                 />
               </svg>
-                    </>
-                  )}
                 </div>
               </div>
               <button className="font-kohob text-primary1 bg-primary w-[90%] h-[40px] rounded-full mt-4 ">Send Your Review</button>
