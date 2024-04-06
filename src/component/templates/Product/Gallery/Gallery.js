@@ -41,9 +41,9 @@ export default function Gallery() {
   }, []);
 
   return (
-    <div className="gallery mt-28 flex gap-4 ">
-      <div className="left-gallery sticky top-24 h-[100vh] w-[100%] flex flex-col-reverse md:flex-row items-start gap-2 ">
-        <div className="images flex flex-col gap-4">
+    <div className="gallery mt-28 flex flex-col xl:flex-row  gap-4 ">
+      <div className="left-gallery xl:sticky xl:top-24 h-[500px] w-[100%] flex flex-col-reverse xl:flex-row items-center xl:items-start xl:gap-0 justify-between xl:justify-start gap-2 ">
+        <div className="images flex xl:flex-col   gap-4">
           {images.map((item, index) => (
             <div
               className={`${
@@ -66,8 +66,8 @@ export default function Gallery() {
             </div>
           ))}
         </div>
-        <div className="big-image h-[540px] w-[540px] flex items-center overflow-hidden  rounded-[40px]">
-          <img className=" rounded-[40px] h-[540px] w-[540px] object-cover " src={imageUrl} alt="" />
+        <div className="big-image h-[350px] w-[350px] md:h-[450px] md:w-[450px] xl:w-[540px] xl:h-[540px] flex items-center overflow-hidden  rounded-[40px]">
+          <img className=" rounded-[40px] h-[350px] w-[350px] md:w-[450px] md:h-[450px] xl:w-[540px] xl:h-[540px] object-cover " src={imageUrl} alt="" />
         </div>
       </div>
       <div className="right-gallery w-[100%] ">
@@ -80,8 +80,8 @@ export default function Gallery() {
           airy mesh, gradient colouring and the original wavy design lines, it
           celebrates your defiant style.
         </p>
-        <div className="details flex items-center justify-between mt-[20px]">
-          <div className="images flex flex-col gap-2">
+        <div className="details flex flex-col xl:flex-row gap-4 items-center justify-between mt-[20px]">
+          <div className="images flex xl:flex-col gap-2">
             {image1.map((item, index) => (
               <div
                 onClick={(event) => {

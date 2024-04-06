@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Details() {
   return (
-    <div className="details flex items-start justify-between gap-8 mt-16">
-      <div className="left w-[60%] flex flex-col gap-2">
+    <div className="details flex flex-col md:flex-row items-start justify-between gap-8 mt-16">
+      <div className="left w-[100%] md:w-[60%] flex flex-col gap-2">
         <h1 className="font-kohob text-secondary1 text-[24px]">Lorem ipsum</h1>
         <p className="font-quikr text-secondary1">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -161,7 +161,7 @@ export default function Details() {
           </svg>
         </div>
       </div>
-      <div className="right w-[40%]">
+      <div className="right w-[100%] md:w-[40%]">
         <h1 className="font-kohob text-[24px]">Lorem ipsum</h1>
         <ul className="font-quikr flex flex-col gap-4">
             <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
