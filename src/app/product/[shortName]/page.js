@@ -4,6 +4,8 @@ import Footer from '@/component/modules/Footer/Footer'
 import Gallery from '@/component/templates/Product/Gallery/Gallery'
 import Description from '@/component/templates/Product/Description/Description'
 import Slider from '@/component/templates/Product/Slider/Slider'
+import Details from '@/component/templates/Product/Details/Details'
+import NewProducts from '@/component/templates/Index/NewProducts/NewProducts'
 
 export default function Product() {
   return (
@@ -15,6 +17,9 @@ export default function Product() {
         <Gallery />
         <Description />
         <Slider />
+        <Details />
+        <NewProducts />
+        <NewProducts />
     </div>
     <Footer />
     </>

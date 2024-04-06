@@ -25,7 +25,7 @@ export default function NewProducts() {
   })
   return (
     <div className="NewProducts mt-12">
-      <div className="title container flex items-end justify-between">
+      <div className="title  flex items-end justify-between">
         <h1 className="font-kohob text-[24px] sm:text-[64px]">New Arrivals</h1>
         <button className="text-[16px] sm:text-[24px] font-kohol text-secondary1 sm:pb-4">see more</button>
       </div>

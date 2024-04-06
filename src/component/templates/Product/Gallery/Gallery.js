@@ -42,7 +42,7 @@ export default function Gallery() {
 
   return (
     <div className="gallery mt-28 flex gap-4 ">
-      <div className="left-gallery sticky top-24 h-[100vh] w-[100%] flex items-start gap-2 ">
+      <div className="left-gallery sticky top-24 h-[100vh] w-[100%] flex flex-col-reverse md:flex-row items-start gap-2 ">
         <div className="images flex flex-col gap-4">
           {images.map((item, index) => (
             <div
@@ -66,8 +66,8 @@ export default function Gallery() {
             </div>
           ))}
         </div>
-        <div className="big-image h-[540px] flex items-center overflow-hidden  rounded-[40px]">
-          <img className=" rounded-[40px]" src={imageUrl} alt="" />
+        <div className="big-image h-[540px] w-[540px] flex items-center overflow-hidden  rounded-[40px]">
+          <img className=" rounded-[40px] h-[540px] w-[540px] object-cover " src={imageUrl} alt="" />
         </div>
       </div>
       <div className="right-gallery w-[100%] ">
