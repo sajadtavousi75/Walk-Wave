@@ -5,7 +5,7 @@ import React from "react";
 export default function About() {
   return (
     <div className="about">
-      <div className=" border-solid border-b-4 border-secondary1  fixed top-0 left-0 right-0 z-50 ">
+      <div className=" border-solid border-b-4 border-secondary1 bg-primary1  fixed top-0 left-0 right-0 z-50 ">
         <Navbar />
       </div>
       <div className="main mt-[90px]">
@@ -54,22 +54,22 @@ export default function About() {
               </linearGradient>
             </defs>
           </svg>
-          <h1 className="mt-12 text-[24px] font-quikr">
+          <h1 className="mt-12 text-[24px] font-quikr container text-center">
             Welcome to{" "}
             <span className="font-kohob text-secondary1">WalkWave</span>, where
             passion meets innovation.
           </h1>
-          <p className="font-quikr my-2">
+          <p className="font-quikr my-2 container text-center">
             We're thrilled to have you here as we embark on a journey to
             redefine footwear fashion and inspire confidence in every step.
           </p>
           <hr className="h-[2px] bg-secondary1 w-[100%]" />
-          <p className="my-2 font-quikr text-secondary1">
+          <p className="my-2 font-quikr text-secondary1 container text-center">
             our brand emerged from a desire to fill a gap in the market for
             stylish and comfortable footwear that caters to all walks of life.
           </p>
         </div>
-        <div className="team container flex items-start justify-between gap-4 mt-28">
+        <div className="team container flex flex-col md:flex-row items-start justify-between gap-4 mt-28">
           <div className="left flex items-start justify-between gap-4">
             <div className="img">
               <div className="w-[120px] h-[180px]">
@@ -106,18 +106,25 @@ export default function About() {
           </div>
         </div>
         <div className="contact flex flex-col items-center mt-28">
-          <h1 className="font-kohob text-[24px] text-secondary1">Contact Information</h1>
-          <p className="font-quikr my-2">Have questions or feedback?</p>
+          <h1 className="font-kohob text-[24px] text-secondary1 container text-center">
+            Contact Information
+          </h1>
+          <p className="font-quikr my-2 container text-center">Have questions or feedback?</p>
           <hr className="h-[2px] bg-secondary1 w-[100%]" />
-          <p className="font-quikr mt-2">
-            Reach out to us at : <span className="font-kohob text-secondary1">contact@yourbrandname.com</span>
+          <p className="font-quikr mt-2 container text-center">
+            Reach out to us at :{" "}
+            <span className="font-kohob text-secondary1">
+              contact@yourbrandname.com
+            </span>
           </p>
-          <p className="font-quikr">
-            or give us a call at : <span className="font-kohob text-secondary1">1-800-123-4567</span>
+          <p className="font-quikr container text-center">
+            or give us a call at :{" "}
+            <span className="font-kohob text-secondary1">1-800-123-4567</span>
           </p>
-          <p className="font-quikr">
+          <p className="font-quikr container text-center">
             Connect with us on social media for the latest updates and
-            behind-the-scenes glimpses of <span className="font-kohob text-secondary1">WalkWave</span>.
+            behind-the-scenes glimpses of{" "}
+            <span className="font-kohob text-secondary1">WalkWave</span>.
           </p>
           <div className="social flex items-center justify-center">
             <svg
@@ -154,6 +161,25 @@ export default function About() {
                 stroke-linejoin="round"
               />
             </svg>
+          </div>
+        </div>
+        <div className="style w-[100%] h-[700px] relative mt-28">
+          <img
+            className="w-full h-[700px] object-cover   z-10"
+            src="/images/about/Frame 270.png"
+            alt=""
+          />
+          <div className="right w-[320px] z-20 absolute -bottom-10 right-[50px] md:top-[270px] md:right-[5.5%]">
+            <h1 className="font-kohob text-[36px] text-primary1 text-center md:text-start">
+              Explore our collections
+            </h1>
+            <button className="w-[300px] h-[40px] rounded-full bg-primary text-primary1 font-kohob mt-4">
+              Explore
+            </button>
+          </div>
+          <div className="left container md:w-[410px] absolute top-0 ">
+            <h1 className="font-kohob text-[64px] text-primary1">Ready to step into style with</h1>
+            <h1 className="font-kohob text-[64px] text-secondary1 ">WalkWave?</h1>
           </div>
         </div>
       </div>
