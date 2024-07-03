@@ -1,8 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import {usePathname} from 'next/navigation'
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Router from "next/router";
 
 export default function Sidebar() {
   const [toggleSide, setToggleSide] = useState(false);
+  const [pathName, setPathName] = useState("");
+  const pathname= usePathname()
+  console.log(pathname)
 
   const openSide = () => {
     setToggleSide(true);
@@ -20,7 +27,7 @@ export default function Sidebar() {
       } bg-primary1    transition-all duration-700 ease-in-out w-[314px] h-[100vh]  absolute md:sticky top-20 md:-translate-x-[0px]`}
     >
       <div className="flex">
-        <p className="font-kohob text-[24px] border-solid border-b-[5px] border-secondary1 p-1 ">
+        <p className="font-kohob text-[24px] border-solid border-b-[5px] border-secondary1 p-1 w-[220px] ">
           USER NAME
         </p>
         <div
@@ -29,8 +36,8 @@ export default function Sidebar() {
           } absolute md:hidden -right-[60px] transition-all duration-700 ease-in-out   w-[60px] bg-secondary1 flex items-start justify-center cursor-pointer`}
         >
           <svg
-          className={`${toggleSide ? 'hidden' : ''}`}
-          onClick={openSide}
+            className={`${toggleSide ? "hidden" : ""}`}
+            onClick={openSide}
             width="86"
             height="86"
             viewBox="0 0 86 86"
@@ -63,8 +70,8 @@ export default function Sidebar() {
           } absolute md:hidden -right-[60px] transition-all duration-700 ease-in-out   w-[60px] bg-secondary1 flex items-start justify-center cursor-pointer`}
         >
           <svg
-          className={`${toggleSide ? '' : 'hidden'} mt-8`}
-          onClick={closeSide}
+            className={`${toggleSide ? "" : "hidden"} mt-8`}
+            onClick={closeSide}
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -86,33 +93,181 @@ export default function Sidebar() {
         </div>
       </div>
       <div className="links flex flex-col gap-5">
-        <div className="link  h-[40px] rounded-full flex items-center p-2">
-          <a className="font-kohol text-secondary1" href="">
+        <div className= 'link  h-[40px] rounded-full flex items-center p-2'>
+          <Link
+            className={`${pathname == '/profile/edit' ? 'font-kohob' : 'kohol'}  text-secondary1 flex items-center justify-center gap-4`}
+            href="/profile/edit"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M20.4629 1.68396L22.5599 3.48209C22.7624 3.68732 22.8766 3.97398 22.875 4.27345C22.8735 4.5729 22.7565 4.8582 22.5519 5.06103L20.9584 7.11438L15.5364 14.0776C15.4415 14.1946 15.3152 14.2768 15.1749 14.3127L12.3628 14.999C11.9939 15.0189 11.6727 14.7301 11.625 14.3357V11.224C11.6345 11.0739 11.6906 10.9317 11.7843 10.8202L17.1058 4.34149L18.9323 1.99254C19.2936 1.48249 19.9546 1.34924 20.4629 1.68396Z"
+                stroke="#008080"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12.375 4.32692C12.9721 4.32692 13.4563 3.86199 13.4563 3.28846C13.4563 2.71494 12.9721 2.25 12.375 2.25V4.32692ZM8.33821 3.28846V2.25H8.33562L8.33821 3.28846ZM2.9563 8.48082H4.03758V8.47846L2.9563 8.48082ZM2.9563 16.2693L4.03758 16.2715V16.2693H2.9563ZM8.33821 21.4615L8.33562 22.5H8.33821V21.4615ZM16.4118 21.4615V22.5H16.4144L16.4118 21.4615ZM21.7937 16.2693H20.7124V16.2715L21.7937 16.2693ZM22.875 11.077C22.875 10.5033 22.3909 10.0385 21.7937 10.0385C21.1965 10.0385 20.7124 10.5033 20.7124 11.077H22.875ZM6.99309 16.5296C6.39592 16.5296 5.91181 16.9944 5.91181 17.568C5.91181 18.1415 6.39592 18.6065 6.99309 18.6065V16.5296ZM17.7583 18.6065C18.3555 18.6065 18.8396 18.1415 18.8396 17.568C18.8396 16.9944 18.3555 16.5296 17.7583 16.5296V18.6065ZM12.375 2.25H8.33821V4.32692H12.375V2.25ZM8.33562 2.25C4.75959 2.25825 1.86736 5.04859 1.87502 8.48303L4.03758 8.47846C4.03248 6.19098 5.95892 4.33241 8.34081 4.32692L8.33562 2.25ZM1.87502 8.48082V16.2693H4.03758V8.48082H1.87502ZM1.87502 16.2669C1.86736 19.7013 4.75959 22.4917 8.33562 22.5L8.34081 20.4231C5.95892 20.4175 4.03248 18.559 4.03758 16.2715L1.87502 16.2669ZM8.33821 22.5H16.4118V20.4231H8.33821V22.5ZM16.4144 22.5C19.9904 22.4917 22.8826 19.7013 22.875 16.2669L20.7124 16.2715C20.7175 18.559 18.791 20.4175 16.4092 20.4231L16.4144 22.5ZM22.875 16.2693V11.077H20.7124V16.2693H22.875ZM6.99309 18.6065H17.7583V16.5296H6.99309V18.6065Z"
+                fill="#008080"
+              />
+            </svg>
             EDIT PROFILE
-          </a>
+          </Link>
         </div>
-        <div className="link w-[200px]  h-[40px] rounded-full flex items-center p-2 bg-secondary1">
-          <a className="font-kohol text-white   rounded-full" href="">
+        <div className={`${pathname === '/profile' ? 'bg-secondary1' : ''} link w-[200px]  h-[40px] rounded-full flex items-center p-2 `}>
+          <Link
+            className={`${pathname === '/profile' ? 'font-kohob text-white' : 'font-kohol'}     rounded-full flex items-center justify-center gap-4`}
+            href="/profile"
+          >
+            <svg
+              width="24"
+              height="26"
+              viewBox="0 0 24 26"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M8.03409 10.9278H3.678C3.03882 10.9226 2.42372 11.1714 1.96802 11.6196C1.5123 12.0678 1.25332 12.6787 1.24805 13.3178V22.3633C1.25987 23.6938 2.34758 24.763 3.678 24.7518H8.03409C8.67322 24.7572 9.28839 24.5084 9.74412 24.0602C10.1999 23.612 10.4588 23.0011 10.464 22.3618V13.3178C10.4588 12.6787 10.1999 12.0678 9.74412 11.6196C9.28839 11.1714 8.67322 10.9226 8.03409 10.9278Z"
+                stroke={`${pathname === '/profile' ? 'white' : 'black'}`}
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M8.03409 1.71186H3.678C2.37433 1.67571 1.28735 2.70154 1.24805 4.00511V5.56262C1.28735 6.8662 2.37433 7.89204 3.678 7.85586H8.03409C9.3377 7.89204 10.4247 6.8662 10.464 5.56262V4.00511C10.4247 2.70154 9.3377 1.67571 8.03409 1.71186Z"
+                stroke={`${pathname === '/profile' ? 'white' : 'black'}`}
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M15.9661 15.537H20.3206C20.9601 15.5427 21.5756 15.294 22.0316 14.8458C22.4876 14.3975 22.7469 13.7865 22.7521 13.147V4.10299C22.7469 3.46383 22.4879 2.85293 22.0322 2.40471C21.5765 1.95649 20.9613 1.70766 20.3222 1.71297H15.9661C15.327 1.70766 14.7118 1.95649 14.2561 2.40471C13.8003 2.85293 13.5414 3.46383 13.5361 4.10299V13.147C13.5414 13.7861 13.8003 14.397 14.2561 14.8452C14.7118 15.2934 15.327 15.5423 15.9661 15.537Z"
+                stroke={`${pathname === '/profile' ? 'white' : 'black'}`}
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M15.9661 24.7523H20.3206C21.6249 24.7894 22.7128 23.7633 22.7521 22.4591V20.9016C22.7128 19.598 21.6258 18.5723 20.3222 18.6083H15.9661C14.6625 18.5723 13.5755 19.598 13.5361 20.9016V22.4576C13.5745 23.7618 14.6619 24.7884 15.9661 24.7523Z"
+                stroke={`${pathname === '/profile' ? 'white' : 'black'}`}
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
             DASHBOARD
-          </a>
+          </Link>
         </div>
-        <div className="link  h-[40px] rounded-full flex items-center p-2">
-          <a className="font-kohol" href="">
+        <div className={`${pathname === '/profile/order' ? 'bg-secondary1' : ''} link w-[200px]  h-[40px] rounded-full flex items-center p-2 `}>
+          <Link
+            className={`${pathname === '/profile/order' ? 'font-kohob text-white' : 'font-kohol'}     rounded-full flex items-center justify-center gap-4`}
+            href="/profile/order"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M0 3C0 2.44772 0.447715 2 1 2H4.4914C5.83084 2 7.008 2.88793 7.37597 4.17584L8.15485 6.90191L20.5474 5.35972C22.6115 5.10285 24.3043 6.97333 23.8433 9.00162L22.3289 15.6649C22.0185 17.0307 20.8042 18 19.4035 18H11.5086C10.1692 18 8.992 17.1121 8.62403 15.8242L5.45292 4.72528C5.33026 4.29598 4.93788 4 4.4914 4H1C0.447715 4 0 3.55228 0 3ZM8.71091 8.84813L10.5471 15.2747C10.6697 15.704 11.0621 16 11.5086 16H19.4035C19.8704 16 20.2752 15.6769 20.3787 15.2216L21.8931 8.55837C22.0467 7.88228 21.4825 7.25879 20.7944 7.34441L8.71091 8.84813ZM10 21C10 20.4477 10.4477 20 11 20H12C12.5523 20 13 20.4477 13 21C13 21.5523 12.5523 22 12 22H11C10.4477 22 10 21.5523 10 21ZM18 21C18 20.4477 18.4477 20 19 20H20C20.5523 20 21 20.4477 21 21C21 21.5523 20.5523 22 20 22H19C18.4477 22 18 21.5523 18 21Z"
+                fill={`${pathname === '/profile/order' ? 'white' : 'black'}`}
+              />
+            </svg>
             ORDERS
-          </a>
+          </Link>
         </div>
         <div className="link  h-[40px] rounded-full flex items-center p-2">
-          <a className="font-kohol" href="">
+          <a
+            className="font-kohol flex items-center justify-center gap-4"
+            href=""
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_1917_2518)">
+                <path
+                  d="M20.4824 19.3559C18.9086 21.1663 16.7972 22.4262 14.4566 22.9515C12.116 23.4769 9.66872 23.2402 7.47217 22.276C5.27562 21.3116 3.44492 19.6703 2.24739 17.5916C1.04987 15.513 0.548251 13.1059 0.81579 10.722C1.08312 8.33779 2.10573 6.10154 3.73426 4.33982C5.3628 2.57811 7.51194 1.38322 9.86779 0.929688M14.1285 0.938808C15.7106 1.24349 17.2087 1.88445 18.5215 2.81833C19.8344 3.75221 20.9313 4.9572 21.738 6.35177C22.5448 7.74636 23.0426 9.29799 23.1978 10.9017C23.3529 12.5053 23.1617 14.1236 22.6371 15.647"
+                  stroke="black"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M9.56822 11.3756V9.20194C9.56822 7.88388 10.657 6.81543 12.0003 6.81543C13.3436 6.81543 14.4324 7.88388 14.4324 9.20194V11.3756M8.96019 11.3756H15.0405C15.7142 11.3756 16.2565 11.918 16.2565 12.5917V15.9358C16.2565 16.6095 15.7142 17.1519 15.0405 17.1519H8.96019C8.2865 17.1519 7.74414 16.6095 7.74414 15.9358V12.5917C7.74414 11.918 8.2865 11.3756 8.96019 11.3756Z"
+                  stroke="black"
+                  stroke-width="2"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_1917_2518">
+                  <rect width="24" height="24" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
             SECURITY AND PRIVACY
           </a>
         </div>
         <div className="link  h-[40px] rounded-full flex items-center p-2">
-          <a className="font-kohol" href="">
+          <a
+            className="font-kohol flex items-center justify-center gap-4"
+            href=""
+          >
+            <svg
+              width="26"
+              height="26"
+              viewBox="0 0 26 26"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13 13.75C13 10.75 15.25 11.5 15.25 9.25C15.25 8.26562 14.5 7 13 7C11.5 7 10.75 7.75 10 8.5M13 18.25V16M25 13C25 19.6275 19.6275 25 13 25C6.37258 25 1 19.6275 1 13C1 6.37258 6.37258 1 13 1C19.6275 1 25 6.37258 25 13Z"
+                stroke="black"
+                stroke-width="2"
+              />
+            </svg>
             HELP AND SUPPORT
           </a>
         </div>
         <div className="link  h-[40px] rounded-full flex items-center p-2">
-          <a className="font-kohol" href="">
+          <a className="font-kohol flex items-center justify-center gap-4" href="">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 8L22 12M22 12L18 16M22 12H9M15 4.20404C13.7252 3.43827 12.2452 3 10.6667 3C5.8802 3 2 7.02944 2 12C2 16.9706 5.8802 21 10.6667 21C12.2452 21 13.7252 20.5617 15 19.796"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
             LOG OUT
           </a>
         </div>

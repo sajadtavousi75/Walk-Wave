@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
@@ -45,6 +46,7 @@ export default function Navbar() {
       <div className="hidden md:flex ">
         <div className=" navbar h-[80px] container   flex items-center justify-between z-10 bg-primary1  overflow-x-hidden">
           <div className="navbar-logo">
+            <Link href='/'>
             <svg
               width="130"
               height="33"
@@ -89,6 +91,7 @@ export default function Navbar() {
                 </linearGradient>
               </defs>
             </svg>
+            </Link>
           </div>
           <div className="navbar-links flex items-center justify-center">
             <ul
@@ -111,7 +114,9 @@ export default function Navbar() {
                 SHOP
               </li>
               <li className=" cursor-pointer w-[120px] h-[80px] font-kohol	flex items-center justify-center">
+                <Link href='/about'>
                 ABOUT US
+                </Link>
               </li>
             </ul>
           </div>
@@ -213,7 +218,7 @@ export default function Navbar() {
                 MEN
               </p>
               <ul className="pl-0 font-kohol">
-                <li className="hover:font-kohob cursor-pointer">ALL</li>
+                <li className="hover:font-kohob cursor-pointer"><Link href='/shop/MEN/ALL'>ALL</Link></li>
                 <li className="hover:font-kohob cursor-pointer">lifestyle</li>
                 <li className="hover:font-kohob cursor-pointer">running</li>
                 <li className="hover:font-kohob cursor-pointer">football</li>

@@ -11,9 +11,6 @@ import SliderHeader from "@/component/templates/Index/Slider/SliderHeader";
 export default function Home() {
   return (
     <>
-    <div className=" border-solid border-b-4 border-secondary1 bg-primary1 fixed top-0 left-0 right-0 z-50 ">
-      <Navbar />
-    </div>
       <div className="main">
       <SliderHeader />
       <NewProducts />
@@ -22,7 +19,6 @@ export default function Home() {
       <Offer />
       <Production />
       <Introduction />
-      <Footer />
       </div>
     </>
   );
