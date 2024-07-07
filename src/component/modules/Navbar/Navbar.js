@@ -218,7 +218,7 @@ export default function Navbar() {
                 MEN
               </p>
               <ul className="pl-0 font-kohol">
-                <li className="hover:font-kohob cursor-pointer"><Link href='/shop/MEN/ALL'>ALL</Link></li>
+                <li className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=Men&category=ALL'>ALL</Link></li>
                 <li className="hover:font-kohob cursor-pointer">lifestyle</li>
                 <li className="hover:font-kohob cursor-pointer">running</li>
                 <li className="hover:font-kohob cursor-pointer">football</li>

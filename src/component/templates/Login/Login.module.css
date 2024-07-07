@@ -1,8 +1,9 @@
 .text{
     color: white;
-            font-size: 40px;
+            font-size: 64px;
             -webkit-text-stroke-width: 1px;
             -webkit-text-stroke-color: #008080;
             font-family: 'kohob';
+            text-align: center;
 
 }

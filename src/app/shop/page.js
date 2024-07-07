@@ -11,7 +11,6 @@ export default function shop() {
         <Sidebar />
         <ProductBoxes />
     </div>
-        <Footer />
     </>
   )
 }

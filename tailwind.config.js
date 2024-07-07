@@ -48,7 +48,10 @@ module.exports = {
       },
       transitionProperty: {
         'height': 'height'
-      }
+      },
+      backgroundImage: {
+        'custom-svg': "url('/images/svgs/vector (3).svg')",
+      },
     },
   },
   plugins: [],
