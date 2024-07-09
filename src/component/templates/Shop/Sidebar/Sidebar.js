@@ -1,6 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from 'next/navigation';
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import Router from "next/router";
 
 export default function Sidebar() {
   const [showGender, setShowGender] = useState(false);
@@ -18,6 +21,12 @@ export default function Sidebar() {
   const [sizeIndex, setSizeIndex] = useState(null);
   const [sizeValue, setSizeValue] = useState("All");
   const [showFilterMobile, setShowFilterMobile] = useState(false);
+
+  const router = useRouter()
+  const params = useSearchParams()
+  console.log(params)
+
+  const { query } = router;
 
   useEffect(() => {
     if (showFilterMobile) {
@@ -214,6 +223,9 @@ export default function Sidebar() {
                     onClick={(event) => {
                       setGenderIndex(index);
                       setGenderValue(event.target.innerText);
+                      const params = new URLSearchParams(window.location.search);
+                      params.set('gender', item);
+                      router.push(`/shop?${params.toString()}`);
                     }}
                     key={index}
                     className={`${
@@ -236,6 +248,9 @@ export default function Sidebar() {
                 onClick={(event) => {
                   setCategoryIndex(index);
                   setCategoryValue(event.target.innerText);
+                  const params = new URLSearchParams(window.location.search);
+                      params.set('category', item);
+                      router.push(`/shop?${params.toString()}`);
                 }}
                 className={`${
                   categoryIndex === index ? "font-kohob text-secondary1" : ""
