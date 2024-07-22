@@ -1,11 +1,13 @@
 import { Http } from "../HttpConfig";
 
-const AuthLogin= async(userData)=>{
-    await Http.post('/register' , {
+const AuthRegister= async(userData)=>{
+ const {data} =  await Http.post('/auth/register' , {
         email:userData.email,
         username:userData.username,
         password:userData.password
-    }).then(({data})=> data)
+    })
+    
+    return data
 }
 
-export default AuthLogin
+export default AuthRegister

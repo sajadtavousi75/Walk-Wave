@@ -194,7 +194,9 @@ export default function Navbar() {
                 showSearch ? "invisible" : "visible "
               } transition-all duration-300 ease-in-out`}
             >
+              <Link href='/register'>
               <img src="/images/profile 1.png" alt="" />
+              </Link>
             </button>
           </div>
         </div>
