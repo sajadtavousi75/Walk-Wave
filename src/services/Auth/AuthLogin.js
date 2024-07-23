@@ -1,10 +1,11 @@
 import { Http } from "../HttpConfig";
 
 const AuthLogin= async(userData)=>{
-    await Http.post('/auth/login' , {
-        email:userData.email,
+  const {data}=  await Http.post('/auth/login' , {
+        identifier:userData.email,
         password:userData.password
-    }).then(({data})=> data)
+    })
+    return data
 }
 
 export default AuthLogin

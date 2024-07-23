@@ -2,6 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Cookies from "js-cookie";
+import { useAuthContext } from "@/context/authContext";
+import { useQuery } from "@tanstack/react-query";
+// import { cookies } from "next/headers";
+
+import getUserInfos from "@/services/Auth/getUserInfos";
+
+import AuthMe from "@/services/Auth/getUserInfos";
 
 export default function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
@@ -10,6 +18,39 @@ export default function Navbar() {
   const [showMobileNavbar, setShowMobileNavbar] = useState(true);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [showMobileSearchResult, setShowMobileSearchResult] = useState(false);
+  const [accessToken , setAccessToken] = useState(false)
+
+  const context= useAuthContext()
+  console.log(context)
+
+
+  useEffect(()=>{
+    const token= Cookies.get('access-token')
+    if(token){
+      setAccessToken(true)
+    }
+    console.log()
+  },[])
+
+  useEffect(()=>{
+   getUserInfos()
+  },[])
+
+  const getUserInfos=()=>{
+    const token= Cookies.get('access-token')
+    if(token){
+
+      fetch('http://localhost:4000/api/v1/auth/me',{
+        headers:{
+          "Authorization":`Bearer ${token}`
+        }
+      }).then((res)=> res.json())
+      .then((data)=>{
+        context.setEmail(data.email)
+        context.setUserName(data.username)
+      })
+    }
+  }
 
   const cancelhandel = () => {
     setShowSearch(false);
@@ -194,9 +235,17 @@ export default function Navbar() {
                 showSearch ? "invisible" : "visible "
               } transition-all duration-300 ease-in-out`}
             >
-              <Link href='/register'>
+              {context.userName === '' ? (
+                <Link href='/register'>
+                <img src="/images/profile 1.png" alt="" />
+                </Link>
+              
+
+              ) : (
+                <Link href='/profile'>
               <img src="/images/profile 1.png" alt="" />
               </Link>
+              )}
             </button>
           </div>
         </div>

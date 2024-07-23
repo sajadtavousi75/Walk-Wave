@@ -8,10 +8,14 @@ import AuthRegister from '@/services/Auth/AuthRegister';
 import { setAuthCookie } from '@/utils/setAuthCookie';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { useAuthContext } from '@/context/authContext';
+import Link from 'next/link';
 
 
 
 export default function RegisterForm() {
+
+  const context= useAuthContext()
 
   const router= useRouter()
 
@@ -23,6 +27,10 @@ export default function RegisterForm() {
        AuthRegister(data),
     onSuccess: async (data)=>{
       console.log(data)
+      context.setEmail(data.user.email)
+      context.setUserName(data.user.username)
+      context.setAccessToken(data.accessToken)
+      console.log(context)
       toast.success('Welcome to walkWave')
       await fetch('/api/setAuthCookie', {
         method: 'POST',
@@ -109,7 +117,7 @@ export default function RegisterForm() {
                   <span className="text-sm text-red-700">{errors.password.message}</span>
                   )}
                 <button className='w-[300px] h-[40px] rounded-full bg-black text-white font-kohob' type='submit'>SIGN UP</button>
-            <p className='font-quikr'>Already have an account ? <span className='font-kohob text-secondary1'>LOG IN</span></p>
+            <p className='font-quikr'>Already have an account ? <Link href='login' className='font-kohob text-secondary1'>LOG IN</Link></p>
             </form>
         </div>
     </div>

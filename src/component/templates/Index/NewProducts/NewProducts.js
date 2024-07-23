@@ -2,9 +2,20 @@
 import ProductBox from "@/component/modules/ProductBox/ProductBox";
 import React, { useEffect, useState } from "react";
 import {motion} from 'framer-motion'
+import { useQuery } from "@tanstack/react-query";
+import getAllProduct from "@/services/product/getAllProduct";
 
 export default function NewProducts() {
   const [scrolProduct , setScrolProduct] = useState(false)
+  const [allProduct , setAllProduct]= useState([])
+
+    const {data:allProductData}=useQuery({
+      queryKey:['AllProduct'],
+      queryFn:async()=>await getAllProduct()
+    })
+
+
+  
 
   useEffect(()=>{
     const handelScrol=()=>{
@@ -36,10 +47,13 @@ export default function NewProducts() {
       animate={{ opacity: 1, y:0 }}
       transition={{  stiffness: 100 , duration:2 }}
       className="product-boxes container py-8 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 	 justify-items-center ">
+        {allProductData.map((data)=>(
+
         <ProductBox />
+        ))}
+        {/* <ProductBox />
         <ProductBox />
-        <ProductBox />
-        <ProductBox />
+        <ProductBox /> */}
         {/* <ProductBox /> */}
       </motion.div>
       )}

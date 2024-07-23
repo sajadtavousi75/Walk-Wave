@@ -10,13 +10,16 @@ export function useAuthContext() {
 export default function AuthContextProvider({ children }) {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
+  const [accessToken , setAccessToken] = useState('')
 
   return <authContext.Provider
   value={{
     email,
     setEmail,
     userName,
-    setUserName
+    setUserName,
+    accessToken,
+    setAccessToken
   }}
   >{children}</authContext.Provider>;
 }

@@ -4,12 +4,16 @@ import {usePathname} from 'next/navigation'
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
+import { useAuthContext } from "@/context/authContext";
 
 export default function Sidebar() {
   const [toggleSide, setToggleSide] = useState(false);
   const [pathName, setPathName] = useState("");
   const pathname= usePathname()
   console.log(pathname)
+
+  const context= useAuthContext()
+  console.log(context)
 
   const openSide = () => {
     setToggleSide(true);
@@ -27,9 +31,16 @@ export default function Sidebar() {
       } bg-primary1    transition-all duration-700 ease-in-out w-[314px] h-[100vh]  absolute md:sticky top-20 md:-translate-x-[0px]`}
     >
       <div className="flex">
+        {context.userName ? (
+
         <p className="font-kohob text-[24px] border-solid border-b-[5px] border-secondary1 p-1 w-[220px] ">
+          {context.userName}
+        </p>
+        ) : (
+          <p className="font-kohob text-[24px] border-solid border-b-[5px] border-secondary1 p-1 w-[220px] ">
           USER NAME
         </p>
+        )}
         <div
           className={`${
             toggleSide ? "h-[100vh]" : "h-[80px]"
