@@ -8,12 +8,21 @@ import Offer from "@/component/templates/Index/Offer/Offer";
 import Production from "@/component/templates/Index/Production/Production";
 import SliderHeader from "@/component/templates/Index/Slider/SliderHeader";
 
+
+export const metadata={
+  title:'WALK WAVE - HOME',
+  icons:{
+    icon:'/images/svgs/Frame 2.svg'
+
+  }
+}
+
 export default function Home() {
   return (
     <>
       <div className="main">
       <SliderHeader />
-      <NewProducts />
+      <NewProducts title={'New Arrivals'}/>
       <ChildrensCollection />
       <Banner />
       <Offer />

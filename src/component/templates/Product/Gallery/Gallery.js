@@ -1,36 +1,40 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ReviewBox from "../ReviewBox/ReviewBox";
+import toast from 'react-hot-toast';
+import { useAuthContext } from "@/context/authContext";
 
-export default function Gallery() {
+export default function Gallery(data) {
   const [sizeIndex, setSizeIndex] = useState(null);
   const [indexImage, setIndexImage] = useState(0);
   const [indexImageColor, setIndexImageColor] = useState(0);
   const [images, setImages] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
+  const [sizeValue , setSizeValue]=useState('')
 
   const [showWrite , setShowWrite]= useState(false)
   const [showRewiew , setShowRewiew]= useState(false)
   const [showMore , setShowMore]= useState(false)
   const [star , setStar] =useState(0)
 
-
+const context=useAuthContext()
+console.log(data.product.cover2[0])
 
   const image1 = [
     {
-      img: "/images/gallery/1.png",
+      img: `https://walkwave-project.liara.run/uploads/${data.product.cover1[0]}`,
       images: [
-        "/images/gallery/big1.png",
-        "/images/gallery/1.png",
-        "/images/gallery/2.jpg",
+        `https://walkwave-project.liara.run/uploads/${data.product.cover1[0]}`,
+        `https://walkwave-project.liara.run/uploads/${data.product.cover1[1]}`,
+        `https://walkwave-project.liara.run/uploads/${data.product.cover1[2]}`,
       ],
     },
     {
-      img: "/images/gallery/3.png",
+      img: `https://walkwave-project.liara.run/uploads/${data.product.cover2[0]}`,
       images: [
-        "/images/gallery/big2.png",
-        "/images/gallery/3.png",
-        "/images/gallery/4.png",
+        `https://walkwave-project.liara.run/uploads/${data.product.cover2[0]}`,
+        `https://walkwave-project.liara.run/uploads/${data.product.cover2[1]}`,
+        `https://walkwave-project.liara.run/uploads/${data.product.cover2[2]}`,
       ],
     },
   ];
@@ -38,11 +42,12 @@ export default function Gallery() {
   useEffect(() => {
     setImages(image1[0].images);
     setImageUrl(image1[0].images[0]);
+    console.log(image1)
   }, []);
 
   return (
     <div className="gallery mt-28 flex flex-col xl:flex-row  gap-4 ">
-      <div className="left-gallery xl:sticky xl:top-24 h-[500px] w-[100%] flex flex-col-reverse xl:flex-row items-center xl:items-start xl:gap-0 justify-between xl:justify-start gap-2 ">
+      <div className="left-gallery xl:sticky xl:top-24 h-[500px] w-[100%] flex flex-col-reverse xl:flex-row items-center xl:items-start  justify-between xl:justify-start gap-2 ">
         <div className="images flex xl:flex-col   gap-4">
           {images.map((item, index) => (
             <div
@@ -55,7 +60,6 @@ export default function Gallery() {
               <img
                 onMouseEnter={(event) => {
                   setImageUrl(event.target.currentSrc);
-                  console.log(imageUrl);
                   setIndexImage(index);
                 }}
                 // onMouseLeave={}
@@ -71,18 +75,23 @@ export default function Gallery() {
         </div>
       </div>
       <div className="right-gallery w-[100%] ">
-        <h1 className="font-kohob text-[24px]">Nike Air Max Plus Drift</h1>
+        <h1 className="font-kohob text-[24px]">{data.product.name}</h1>
+        {data.product.genderID==='MEN' ? (
+
         <p className="font-kohol text-secondary1">Men's Shoes</p>
-        <h1 className="font-kohob text-[24px] mt-1">€ 198</h1>
+        ) : (
+          <p className="font-kohol text-secondary1">Women's Shoes</p>
+        )}
+        <h1 className="font-kohob text-[24px] mt-1">€ {data.product.price}</h1>
         <p className="font-quikr">
-          Let your attitude have the edge in the Air Max Plus Drift, a "tuned"
-          Air experience that offers premium stability and cushioning. Featuring
-          airy mesh, gradient colouring and the original wavy design lines, it
-          celebrates your defiant style.
+          {data.product.description}
         </p>
         <div className="details flex flex-col xl:flex-row gap-4 items-center justify-between mt-[20px]">
           <div className="images flex xl:flex-col gap-2">
             {image1.map((item, index) => (
+              <>
+              {item.img !=='https://walkwave-project.liara.run/uploads/undefined' ? (
+
               <div
                 onClick={(event) => {
                   setImages(item.images);
@@ -98,31 +107,16 @@ export default function Gallery() {
               >
                 <img className="rounded-[20px]" src={item.img} alt="" />
               </div>
+              ) : (
+                <></>
+              )}
+              </>
             ))}
           </div>
           <div className="size w-[150px]">
             <h1 className="font-kohob">Select Size</h1>
             <ul className="font-kohol grid grid-cols-3 ">
-              {[
-                "ALL",
-                "35",
-                "36",
-                "37.5",
-                "38",
-                "39",
-                "40",
-                "40.5",
-                "41",
-                "42",
-                "43",
-                "44.5",
-                "45.5",
-                "47",
-                "48",
-                "50",
-                "51",
-                "51.5",
-              ].map((item, index) => (
+              {data.product.size.map((item, index) => (
                 <li
                   onClick={(event) => {
                     setSizeIndex(index);
@@ -139,7 +133,14 @@ export default function Gallery() {
             </ul>
           </div>
           <div className="btns flex flex-col items-end gap-4">
-            <button className="group w-[300px] h-[40px] rounded-full font-kohob border-solid border-[1px] border-primary flex items-center justify-center gap-4 hover:bg-secondary1 hover:text-primary1 hover:border-secondary1 transition-all duration-700 ease-in-out">
+            <button onClick={()=>{
+              if(context.userName === ''){
+                toast.warnning('Please Login')
+              }else{
+
+                toast.success('The product has been added to favorites')
+              }
+            }} className="group w-[300px] h-[40px] rounded-full font-kohob border-solid border-[1px] border-primary flex items-center justify-center gap-4 hover:bg-secondary1 hover:text-primary1 hover:border-secondary1 transition-all duration-700 ease-in-out">
               favourite
               <svg
                 className="group-hover:fill-white transition-all duration-700 ease-in-out"
@@ -152,7 +153,14 @@ export default function Gallery() {
                 <path d="M11.5 20C9.13 18.17 0.5 11.12 0.5 5.31C0.5 2.38 2.97 0 6 0C7.9 0 9.64 0.93 10.65 2.48L11.5 3.78L12.35 2.48C13.36 0.93 15.1 0 17 0C20.03 0 22.5 2.38 22.5 5.31C22.5 11.15 13.88 18.18 11.5 20Z" />
               </svg>
             </button>
-            <button className="w-[300px] h-[40px] rounded-full font-kohob border-solid border-[1px] border-primary text-primary1 bg-primary hover:bg-secondary1 hover:border-secondary1 transition-all duration-700 ease-in-out">
+            <button onClick={()=>{
+              if(context.userName === ''){
+                toast.warnning('Please Login')
+              }else{
+
+                toast.success('The product has been added to the cart')
+              }
+            }} className="w-[300px] h-[40px] rounded-full font-kohob border-solid border-[1px] border-primary text-primary1 bg-primary hover:bg-secondary1 hover:border-secondary1 transition-all duration-700 ease-in-out">
               ADD TO CART
             </button>
           </div>

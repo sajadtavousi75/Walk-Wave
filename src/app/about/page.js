@@ -2,6 +2,15 @@ import Footer from "@/component/modules/Footer/Footer";
 import Navbar from "@/component/modules/Navbar/Navbar";
 import React from "react";
 
+
+export const metadata={
+  title:'WALK WAVE -ABOUT',
+  icons:{
+    icon:'/images/svgs/Frame 2.svg'
+
+  }
+}
+
 export default function About() {
   return (
     <div className="about">
@@ -169,7 +178,7 @@ export default function About() {
             src="/images/about/Frame 270.png"
             alt=""
           />
-          <div className="right w-[320px] z-20 absolute -bottom-10 right-[50px] md:top-[270px] md:right-[5.5%]">
+          <div className="right w-[320px] z-20 absolute -bottom-10 right-[30px] md:top-[270px] md:right-[5.5%]">
             <h1 className="font-kohob text-[36px] text-primary1 text-center md:text-start">
               Explore our collections
             </h1>

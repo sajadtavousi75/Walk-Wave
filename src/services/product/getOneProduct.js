@@ -1,7 +1,7 @@
 import { Http } from "../HttpConfig";
 
-const getAllProduct= async()=>{
-    const {data}=  await Http.get('/product' , {
+const getOneProduct= async(shortName)=>{
+    const {data}=  await Http.post(`/product/${shortName}` , {
           headers:{
             'Cache-Control' : 'no-store'
           }
@@ -9,4 +9,4 @@ const getAllProduct= async()=>{
       return data
   }
   
-  export default getAllProduct
+  export default getOneProduct

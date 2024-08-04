@@ -2,10 +2,17 @@
 import React, { useState } from 'react'
 import {motion} from 'framer-motion'
 import ProductBox from '@/component/modules/ProductBox/ProductBox'
+import { useQuery } from '@tanstack/react-query'
+import getAllProduct from '@/services/product/getAllProduct'
 
 export default function Dashboard() {
     const [filterIndex , setFilterIndex]= useState(0)
     const [filterText , setFilterText] = useState('Recent Activity')
+
+    const {data:allProductData}=useQuery({
+      queryKey:['AllProduct'],
+      queryFn:async()=>await getAllProduct()
+    })
     
   return (
     <div className=' w-full'>
@@ -102,8 +109,10 @@ export default function Dashboard() {
       animate={{ opacity: 1, y:0 }}
       transition={{  stiffness: 100 , duration:2 }}
       className="product-boxes container py-8 grid gap-16 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 	 justify-items-center ">
-        <ProductBox />
-        <ProductBox />
+        {allProductData?.slice(0,2).map((data)=>(
+          <ProductBox key={data._id}  product={data} />
+        ))}
+        
       </motion.div>
         </div>
         <div className={`${filterText === 'Recommendations' ? '' : 'hidden'} mt-5`}>
@@ -113,8 +122,9 @@ export default function Dashboard() {
       animate={{ opacity: 1, y:0 }}
       transition={{  stiffness: 100 , duration:2 }}
       className="product-boxes container py-8 grid gap-16 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 	 justify-items-center ">
-        <ProductBox />
-        <ProductBox />
+        {allProductData?.slice(0,2).map((data)=>(
+          <ProductBox key={data._id}  product={data} />
+        ))}
       </motion.div>
         </div>
       </div>

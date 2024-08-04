@@ -11,7 +11,7 @@ export default function Sidebar() {
   const [showSize, setShowSize] = useState(false);
   const [showSort, setShowSort] = useState(false);
   const [priceMin, setPriceMin] = useState(0);
-  const [priceMax, setPriceMax] = useState(2000);
+  const [priceMax, setPriceMax] = useState(10000);
   const [genderIndex, setGenderIndex] = useState(null);
   const [genderValue, setGenderValue] = useState("ALL");
   const [sortIndex, setSortIndex] = useState(null);
@@ -24,9 +24,14 @@ export default function Sidebar() {
 
   const router = useRouter()
   const params = useSearchParams()
-  console.log(params)
+  const category= params.get('category');
+  const gender= params.get('gender');
 
-  const { query } = router;
+  useEffect(()=>{
+    setGenderValue(gender)
+  },[gender])
+
+  
 
   useEffect(() => {
     if (showFilterMobile) {
@@ -146,6 +151,9 @@ export default function Sidebar() {
                       onClick={(event) => {
                         setSortIndex(index);
                         setSortValue(event.target.innerText);
+                        const params = new URLSearchParams(window.location.search);
+                      params.set('sort', event.target.innerText);
+                      router.push(`/shop?${params.toString()}`);
                       }}
                       className={`${
                         sortIndex === index ? "font-kohob text-secondary1" : ""
@@ -229,7 +237,7 @@ export default function Sidebar() {
                     }}
                     key={index}
                     className={`${
-                      genderIndex === index ? "font-kohob text-secondary1" : ""
+                      gender === item ? "font-kohob text-secondary1" : ""
                     } hover:font-kohob cursor-pointer`}
                   >
                     {item}
@@ -253,7 +261,7 @@ export default function Sidebar() {
                       router.push(`/shop?${params.toString()}`);
                 }}
                 className={`${
-                  categoryIndex === index ? "font-kohob text-secondary1" : ""
+                  category === item ? "font-kohob text-secondary1" : ""
                 } cursor-pointer	 hover:font-kohob`}
               >
                 {item}
@@ -318,41 +326,62 @@ export default function Sidebar() {
                 <div className="price-min mt-4">
                   <p className="font-kohob text-[14px] text-secondary1">min</p>
                   <input
-                    onChange={(event) => setPriceMin(event.target.value)}
+                    onChange={(event) => {
+                      setPriceMin(event.target.value)
+                      const params = new URLSearchParams(window.location.search);
+                      params.set('minPrice', event.target.value);
+                      router.push(`/shop?${params.toString()}`);
+                    }}
                     className="bg-secondary1"
                     type="range"
                     min={0}
-                    max={2000}
+                    max={10000}
                     value={priceMin}
                   />
                 </div>
                 <div className="price-max">
                   <p className="font-kohob text-[14px] text-secondary1">max</p>
                   <input
-                    onChange={(event) => setPriceMax(event.target.value)}
+                    onChange={(event) => {
+                      setPriceMax(event.target.value)
+                      const params = new URLSearchParams(window.location.search);
+                      params.set('maxPrice', event.target.value);
+                      router.push(`/shop?${params.toString()}`);
+                    }}
                     className="bg-secondary1"
                     type="range"
                     min={0}
-                    max={2000}
+                    max={10000}
                     value={priceMax}
                   />
                 </div>
                 <div className="show-price flex items-center justify-between gap-4">
                   <input
-                    onChange={(event) => setPriceMin(event.target.value)}
+                    onChange={(event) => {
+                      setPriceMin(event.target.value)
+                      const params = new URLSearchParams(window.location.search);
+                      params.set('minPrice', event.target.value);
+                      router.push(`/shop?${params.toString()}`);
+                    }}
                     className="w-[70px] h-[40px] flex items-center justify-center rounded-full bg-secondary1/10 font-kohob text-[14px] text-center outline-none"
                     type="number"
                     value={priceMin}
+                    
                   />
                   <input
-                    onChange={(event) => setPriceMax(event.target.value)}
+                    onChange={(event) => {
+                      setPriceMax(event.target.value)
+                      const params = new URLSearchParams(window.location.search);
+                      params.set('maxPrice', event.target.value);
+                      router.push(`/shop?${params.toString()}`);
+                    }}
                     className="w-[70px] h-[40px] flex items-center justify-center rounded-full bg-secondary1/10 font-kohob text-[14px] text-center outline-none"
                     type="number"
                     value={priceMax}
                   />
                 </div>
                 <h1 className="text-center font-kohob text-secondary1 mt-2">
-                  0-2000
+                  0-10000
                 </h1>
               </motion.div>
             ) : (
@@ -441,6 +470,9 @@ export default function Sidebar() {
                       onClick={(event) => {
                         setSizeIndex(index);
                         setSizeValue(event.target.innerText);
+                        const params = new URLSearchParams(window.location.search);
+                      params.set('size', item);
+                      router.push(`/shop?${params.toString()}`);
                       }}
                       className={`${
                         sizeIndex === index ? "font-kohob text-secondary1" : ""

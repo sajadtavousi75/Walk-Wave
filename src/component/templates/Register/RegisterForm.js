@@ -26,11 +26,9 @@ export default function RegisterForm() {
     mutationFn: (data)=>
        AuthRegister(data),
     onSuccess: async (data)=>{
-      console.log(data)
       context.setEmail(data.user.email)
       context.setUserName(data.user.username)
       context.setAccessToken(data.accessToken)
-      console.log(context)
       toast.success('Welcome to walkWave')
       await fetch('/api/setAuthCookie', {
         method: 'POST',
@@ -45,7 +43,6 @@ export default function RegisterForm() {
   })
 
   const onSubmit=(data)=>{
-    console.log(data)
     registerForm(data)
   }
 

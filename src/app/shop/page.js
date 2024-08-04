@@ -4,6 +4,14 @@ import ProductBoxes from '@/component/templates/Shop/ProductBoxes/ProductBoxes'
 import Sidebar from '@/component/templates/Shop/Sidebar/Sidebar'
 import React from 'react'
 
+export const metadata={
+  title:'WALK WAVE - SHOP',
+  icons:{
+    icon:'/images/svgs/Frame 2.svg'
+
+  }
+}
+
 export default function shop(params) {
   return (
     <>

@@ -9,9 +9,7 @@ export default function ChildrensCollection() {
     const handelScrol=()=>{
       const section = document.getElementsByClassName('ChildrensCollection')
       const sectionOffset= section[0].offsetTop
-      console.log(sectionOffset)
       const scrolPosition= window.pageYOffset + window.innerHeight
-      console.log(scrolPosition)
       if(scrolPosition > sectionOffset){
         setScrolChildren(true)
       }

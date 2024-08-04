@@ -5,7 +5,11 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 import { useAuthContext } from "@/context/authContext";
 import { useQuery } from "@tanstack/react-query";
+import {usePathname} from 'next/navigation'
+import toast from 'react-hot-toast';
 // import { cookies } from "next/headers";
+import getAllProduct from "@/services/product/getAllProduct";
+import ProductBox from "../ProductBox/ProductBox";
 
 import getUserInfos from "@/services/Auth/getUserInfos";
 
@@ -19,9 +23,18 @@ export default function Navbar() {
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [showMobileSearchResult, setShowMobileSearchResult] = useState(false);
   const [accessToken , setAccessToken] = useState(false)
+  const [filterSerach , setFilterSearch]=useState([])
+  const [emptyInput , setEmpityInput]=useState(false)
+  const [inputValue, setInputValue]= useState('')
 
   const context= useAuthContext()
-  console.log(context)
+
+  const pathName=usePathname()
+
+  const {data:allProductData}=useQuery({
+    queryKey:['AllProduct'],
+    queryFn:async()=>await getAllProduct()
+  })
 
 
   useEffect(()=>{
@@ -29,7 +42,6 @@ export default function Navbar() {
     if(token){
       setAccessToken(true)
     }
-    console.log()
   },[])
 
   useEffect(()=>{
@@ -40,7 +52,7 @@ export default function Navbar() {
     const token= Cookies.get('access-token')
     if(token){
 
-      fetch('http://localhost:4000/api/v1/auth/me',{
+      fetch('https://walkwave-project.liara.run/api/v1/auth/me',{
         headers:{
           "Authorization":`Bearer ${token}`
         }
@@ -52,20 +64,61 @@ export default function Navbar() {
     }
   }
 
+  const closeNanbarMobaile=()=>{
+    setShowMobileNavbar(true)
+  }
+
+  const filterClick=(filter)=>{
+    setResultSearch(filter)
+  }
   const cancelhandel = () => {
     setShowSearch(false);
     setResultSearch(false);
+    setInputValue('')
+    
   };
 
-  const showSearchHandel = () => {
+  const showSearchHandel = (event) => {
+    setInputValue(event.target.value)
+    const normalize=(str)=>{
+      return str.replace(/\s+/g, '').toLowerCase()
+    }
     setShowSearch(true);
     setResultSearch(true);
+    const normal= event.target.value.replace(/\s+/g, '').toLowerCase()
+    const filtred= allProductData.filter(product => normalize(product.name).includes(normal))
+    setFilterSearch(filtred)
+    if(normal === ''){
+      setFilterSearch([])
+    }
   };
+
+  const handelSearch=()=>{
+    setResultSearch(false)
+    setShowSearch(false)
+    setInputValue('')
+    setShowMobileSearchResult(false);
+  }
 
   const handelMobile = () => {
     setShowMobileSearch(false);
     setShowMobileSearchResult(false);
+
   };
+
+  const handelSearchResultMobile=(event)=>{
+    setShowMobileSearchResult(true);
+    setInputValue(event.target.value)
+    const normalize=(str)=>{
+      return str.replace(/\s+/g, '').toLowerCase()
+    }
+    const normal= event.target.value.replace(/\s+/g, '').toLowerCase()
+    const filtred= allProductData.filter(product => normalize(product.name).includes(normal))
+    setFilterSearch(filtred)
+    if(normal === ''){
+      setFilterSearch([])
+    }
+  }
 
   useEffect(() => {
     if (!showMobileNavbar) {
@@ -75,12 +128,12 @@ export default function Navbar() {
     }
   }, [showMobileNavbar]);
   useEffect(() => {
-    if (showMobileSearchResult) {
+    if (showMobileSearchResult || showSearch) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-  }, [showMobileSearchResult]);
+  }, [showMobileSearchResult,showSearch]);
   return (
     <>
       {/* navbar desktab */}
@@ -137,24 +190,26 @@ export default function Navbar() {
           <div className="navbar-links flex items-center justify-center">
             <ul
               className={`${
-                showSearch ? "opacity-0" : "opacity-100"
+                showSearch ? "opacity-0 invisible" : "opacity-100 visible"
               } transition-all duration-700 ease-in-out flex items-center justify-between gap-2 w-[250px] pl-0 mb-0 text-base`}
             >
-              <li className="font-kohob text-secondary1 cursor-pointer w-[100px] h-[80px] flex items-center justify-center">
+              <Link href='/'>
+              <li className={`${pathName === '/' ? 'font-kohob text-secondary1 ' : 'font-kohol'} cursor-pointer  h-[80px] flex items-center justify-center`}>
                 HOME
               </li>
+              </Link>
               <li
                 onMouseEnter={() => setShowShop(true)}
                 onMouseLeave={() => setShowShop(false)}
                 className={`${
                   showShop
-                    ? "bg-secondary1 text-primary1 h-[80px] font kohob"
-                    : "h-[0px] font-kohol"
-                } transition-all duration-700 ease-in-out cursor-pointer w-[100px]  flex items-center justify-center`}
+                    ? "  h-[80px] "
+                    : "h-[0px] "
+                } ${pathName === '/shop' ? 'font-kohob text-secondary1' : 'font-kohol '} transition-all duration-700 ease-in-out cursor-pointer   flex items-center justify-center`}
               >
                 SHOP
               </li>
-              <li className=" cursor-pointer w-[120px] h-[80px] font-kohol	flex items-center justify-center">
+              <li className={`${pathName === '/about' ? 'text-secondary1 font-kohob' : 'font-kohol'} cursor-pointer  h-[80px] flex items-center justify-center`}>
                 <Link href='/about'>
                 ABOUT US
                 </Link>
@@ -182,6 +237,7 @@ export default function Navbar() {
                 }transition-all duration-700 ease-in-out h-[40px] bg-secondary1/10 p-2 rounded-full text-center font-kohoe focus:outline-none focus:border-none hover:bg-secondary1/20`}
                 type="text"
                 placeholder="Search"
+                value={inputValue}
               />
               <svg
               className="absolute top-2 left-1"
@@ -228,7 +284,16 @@ export default function Navbar() {
                 showSearch ? "invisible" : "visible "
               } transition-all duration-300 ease-in-out`}
             >
+              {context.userName === '' ? (
+                <img onClick={()=>{
+                  toast.warnning('Please login')
+                }} src="/images/basket 1.png" alt="" />
+              ) : (
+
+              <Link href='/profile/order'>
               <img src="/images/basket 1.png" alt="" />
+              </Link>
+              )}
             </button>
             <button
               className={`${
@@ -251,9 +316,16 @@ export default function Navbar() {
         </div>
         <div
           className={`${
-            resultSearch ? "top-24 h-[250px]" : "top-24 h-0"
+            resultSearch ? "top-24 h-[100vh] overflow-y-scroll	pb-24 visible opacity-100" : "top-24 h-0 invisible opacity-0"
           } transition-all duration-700 ease-in-out w-[100%]  bg-secondary1 absolute z-10 `}
-        ></div>
+        >
+          <h1 className="font-kohob text-center">SEARCH RESULT</h1>
+          <div onClick={handelSearch} className="product-boxes container py-8 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 	 justify-items-center">
+            {filterSerach?.map((data)=>(
+              <ProductBox  key={data._id} product={data}/>
+            ))}
+          </div>
+        </div>
         <div
           onMouseEnter={() => setShowShop(true)}
           onMouseLeave={() => setShowShop(false)}
@@ -269,10 +341,10 @@ export default function Navbar() {
                 MEN
               </p>
               <ul className="pl-0 font-kohol">
-                <li className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=Men&category=ALL'>ALL</Link></li>
-                <li className="hover:font-kohob cursor-pointer">lifestyle</li>
-                <li className="hover:font-kohob cursor-pointer">running</li>
-                <li className="hover:font-kohob cursor-pointer">football</li>
+                <li onClick={()=> setShowShop(false)} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=MEN&category=ALL'>ALL</Link></li>
+                <li onClick={()=> setShowShop(false)} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=MEN&category=lifestyle'>lifestyle</Link></li>
+                <li onClick={()=> setShowShop(false)} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=MEN&category=running'>running</Link></li>
+                <li onClick={()=> setShowShop(false)} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=MEN&category=football'>football</Link></li>
               </ul>
             </div>
             <div>
@@ -280,10 +352,10 @@ export default function Navbar() {
                 women
               </p>
               <ul className="pl-0 font-kohol">
-                <li className="hover:font-kohob cursor-pointer">ALL</li>
-                <li className="hover:font-kohob cursor-pointer">lifestyle</li>
-                <li className="hover:font-kohob cursor-pointer">running</li>
-                <li className="hover:font-kohob cursor-pointer">football</li>
+                <li onClick={()=> setShowShop(false)} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=WOMEN&category=ALL'>ALL</Link></li>
+                <li onClick={()=> setShowShop(false)} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=WOMEN&category=lifestyle'>lifestyle</Link></li>
+                <li onClick={()=> setShowShop(false)} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=WOMEN&category=running'>running</Link></li>
+                <li onClick={()=> setShowShop(false)} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=WOMEN&category=football'>football</Link></li>
               </ul>
             </div>
           </div>
@@ -313,7 +385,9 @@ export default function Navbar() {
                 />
               ) : (
                 <img
-                  onClick={() => setShowMobileNavbar(true)}
+                  onClick={() => {
+                    setInputValue('')
+                    setShowMobileNavbar(true)}}
                   className="cursor-pointer"
                   src="/images/menu-can.png"
                   alt=""
@@ -322,6 +396,7 @@ export default function Navbar() {
             </div>
           )}
           <div className="logo flex translate-x-20">
+            <Link href='/'>
             <img
               className={`${
                 showMobileSearch ? "opacity-0 invisible" : "opacity-100 visible"
@@ -329,8 +404,9 @@ export default function Navbar() {
               src="/images/Frame 2.png"
               alt=""
             />
+            </Link>
             <input
-              onChange={() => setShowMobileSearchResult(true)}
+              onChange={handelSearchResultMobile}
               className={`${
                 showMobileSearch
                   ? "-translate-x-32 visible opacity-100"
@@ -377,8 +453,12 @@ export default function Navbar() {
                 className="left"
               >
                 <ul className="flex items-center justify-center gap-3">
+                  <Link onClick={closeNanbarMobaile}  href='/'>
                   <li className="text-secondary1 font-kohob">HOME </li>
+                  </Link>
+                  <Link onClick={closeNanbarMobaile} href='/about'>
                   <li className="font-kohol">About Us</li>
+                  </Link>
                 </ul>
               </motion.div>
             ) : (
@@ -392,8 +472,28 @@ export default function Navbar() {
                 style={{}}
                 className="right flex items-center justify-center gap-3"
               >
-                <img src="/images/basket 1.png" alt="" />
+                {context.userName === '' ? (
+                <img onClick={()=>{
+                  toast.warnning('Please login')
+                  setShowMobileNavbar(true)
+                }} src="/images/basket 1.png" alt="" />
+              ) : (
+
+              <Link href='/profile/order'>
+              <img src="/images/basket 1.png" alt="" />
+              </Link>
+              )}
+                {context.userName === '' ? (
+                <Link onClick={closeNanbarMobaile}  href='/register'>
                 <img src="/images/profile 1.png" alt="" />
+                </Link>
+              
+
+              ) : (
+                <Link onClick={closeNanbarMobaile}  href='/profile'>
+              <img src="/images/profile 1.png" alt="" />
+              </Link>
+              )}
               </motion.div>
             ) : (
               <></>
@@ -413,19 +513,19 @@ export default function Navbar() {
                 MEN
               </p>
               <ul className="pl-0 font-kohol flex flex-col items-center">
-                <li className="hover:font-kohob cursor-pointer">ALL</li>
-                <li className="hover:font-kohob cursor-pointer">lifestyle</li>
-                <li className="hover:font-kohob cursor-pointer">running</li>
-                <li className="hover:font-kohob cursor-pointer">football</li>
+              <li onClick={closeNanbarMobaile} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=MEN&category=ALL'>ALL</Link></li>
+                <li onClick={closeNanbarMobaile} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=MEN&category=lifestyle'>lifestyle</Link></li>
+                <li onClick={closeNanbarMobaile} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=MEN&category=running'>running</Link></li>
+                <li onClick={closeNanbarMobaile} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=MEN&category=football'>football</Link></li>
               </ul>
               <p className="text-secondary1 font-kohob border-solid border-b-2 border-secondary1 mb-1 mt-2">
                 women
               </p>
               <ul className="pl-0 font-kohol flex flex-col items-center">
-                <li className="hover:font-kohob cursor-pointer">ALL</li>
-                <li className="hover:font-kohob cursor-pointer">lifestyle</li>
-                <li className="hover:font-kohob cursor-pointer">running</li>
-                <li className="hover:font-kohob cursor-pointer">football</li>
+              <li onClick={closeNanbarMobaile} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=WOMEN&category=ALL'>ALL</Link></li>
+                <li onClick={closeNanbarMobaile} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=WOMEN&category=lifestyle'>lifestyle</Link></li>
+                <li onClick={closeNanbarMobaile} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=WOMEN&category=running'>running</Link></li>
+                <li onClick={closeNanbarMobaile} className="hover:font-kohob cursor-pointer"><Link href='/shop?gender=WOMEN&category=football'>football</Link></li>
               </ul>
               <div className="question">
                 <p className="text-center font-kohob mt-2">
@@ -458,7 +558,14 @@ export default function Navbar() {
           className={`${
             showMobileSearchResult ? "top-[78px] h-[100vh]" : "top-[78px] h-0"
           } transition-all duration-700 ease-in-out bg-primary1   absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden mt-[5px] z-10`}
-        ></div>
+        >
+          <h1 className="font-kohob text-center">SEARCH RESULT</h1>
+          <div onClick={handelSearch} className="product-boxes container py-8 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 	 justify-items-center">
+            {filterSerach?.map((data)=>(
+              <ProductBox  key={data._id} product={data}/>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );

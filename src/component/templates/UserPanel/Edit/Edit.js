@@ -1,6 +1,9 @@
+'use client'
 import React from "react";
+import { useAuthContext } from "@/context/authContext";
 
 export default function Edit() {
+  const context=useAuthContext()
   return (
     <div className="edit w-full mt-[10px]">
       <p className="font-kohob text-[24px] border-solid border-b-2 border-secondary1">Personal Information</p>
@@ -8,15 +11,15 @@ export default function Edit() {
       <div className="form flex flex-col gap-4 mt-4">
         <div>
           <p className="font-quikr">Full Name</p>
-          <input className="w-[300px] h-[40px] p-2 border-none outline-none bg-opacity-5 rounded-lg bg-secondary1 font-quikr" type="" />
+          <input className="w-[300px] h-[40px] p-2 border-none outline-none bg-opacity-10 rounded-lg bg-secondary1 font-quikr" type="" value={context.userName} />
         </div>
         <div>
           <p className="font-quikr">EMAIL</p>
-          <input className="w-[300px] h-[40px] p-2 border-none outline-none bg-opacity-5 rounded-lg bg-secondary1 font-quikr" type="" />
+          <input className="w-[300px] h-[40px] p-2 border-none outline-none bg-opacity-10 rounded-lg bg-secondary1 font-quikr" type="" value={context.email} />
         </div>
         <div>
           <p className="font-quikr">PASSWORD</p>
-          <input className="w-[300px] h-[40px] p-2 border-none outline-none bg-opacity-5 rounded-lg bg-secondary1 font-quikr" type="" />
+          <input className="w-[300px] h-[40px] p-2 border-none outline-none bg-opacity-10 rounded-lg bg-secondary1 font-quikr" type="" />
         </div>
       </div>
       <div className="upload flex items-center justify-center gap-4">

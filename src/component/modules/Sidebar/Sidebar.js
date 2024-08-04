@@ -10,10 +10,8 @@ export default function Sidebar() {
   const [toggleSide, setToggleSide] = useState(false);
   const [pathName, setPathName] = useState("");
   const pathname= usePathname()
-  console.log(pathname)
 
   const context= useAuthContext()
-  console.log(context)
 
   const openSide = () => {
     setToggleSide(true);

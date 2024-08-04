@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./Footer.module.css";
+import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="footer container  mt-12 py-16 border-solid border-t-2 border-secondary1">
+    <div className="footer container  mt-24 py-16 border-solid border-t-2 border-secondary1">
       <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
         <div className="flex items-center justify-between gap-8">
-        <div className="link flex flex-col items-start justify-start gap-8">
+        {/* <div className="link flex flex-col items-start justify-start gap-8">
           <ul className="font-kohob text-[14px]">
             <li>SHOP</li>
             <li>WOMEN</li>
@@ -18,15 +19,23 @@ export default function Footer() {
             <li> Privacy Policy</li>
             <li>FAQ</li>
           </ul>
-        </div>
-        <div className="link flex flex-col items-start gap-8">
+        </div> */}
+        <div className="link flex flex-row items-start justify-center gap-8">
           <ul className="font-kohob text-[14px]">
+            <Link href='/shop?gender=ALL&category=ALL'>
             <li>SHOP</li>
+            </Link>
+            <Link href='/shop?gender=WOMEN&category=ALL'>
             <li>WOMEN</li>
+            </Link>
+            <Link href='/shop?gender=MEN&category=ALL'>
             <li>MEN</li>
+            </Link>
           </ul>
           <ul className="font-kohob text-[14px]">
+            <Link href='/about'>
             <li>About Us</li>
+            </Link>
             <li>Terms and Conditions</li>
             <li> Privacy Policy</li>
             <li>FAQ</li>
@@ -128,12 +137,18 @@ export default function Footer() {
         </div>
         <div className="right flex flex-col items-center justify-center">
           <div className="login flex gap-2">
-            <button className="w-[150px] h-[40px] rounded-full font-kohob text-primary1 bg-primary hover:bg-secondary1 transition-all duration-700 ease-in-out">
+            <Link href='/login'>
+            
+            <button href='login' className="w-[150px] h-[40px] rounded-full font-kohob text-primary1 bg-primary hover:bg-secondary1 transition-all duration-700 ease-in-out">
               LOG IN
             </button>
+            </Link>
+            <Link href='/register'>
+            
             <button className="w-[150px] h-[40px] rounded-full font-kohob border-solid border-2 border-primary hover:bg-secondary1 hover:border-none hover:text-primary1 transition-all duration-700 ease-in-out">
               SIGN UP
             </button>
+            </Link>
           </div>
           <div className="text">
             <p className="text-center font-kohob mt-2">

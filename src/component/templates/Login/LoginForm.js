@@ -25,11 +25,9 @@ export default function LoginForm() {
     mutationKey: ["user"],
     mutationFn: (data) => AuthLogin(data),
     onSuccess: async (data) => {
-      console.log(data);
       // context.setEmail(data.user.email)
       // context.setUserName(data.user.username)
       // context.setAccessToken(data.accessToken)
-      // console.log(context)
       toast.success("Welcome to walkWave");
       await fetch("/api/setAuthCookie", {
         method: "POST",
@@ -41,7 +39,7 @@ export default function LoginForm() {
       router.push("/");
       const token = Cookies.get("access-token");
       if (token) {
-        fetch("http://localhost:4000/api/v1/auth/me", {
+        fetch("https://walkwave-project.liara.run/api/v1/auth/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -59,7 +57,6 @@ export default function LoginForm() {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
     loginForm(data);
   };
 
