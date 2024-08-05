@@ -52,10 +52,6 @@ export default function NewProducts({title}) {
 
         <ProductBox key={data._id} product={data} />
         ))}
-        {/* <ProductBox />
-        <ProductBox />
-        <ProductBox /> */}
-        {/* <ProductBox /> */}
       </motion.div>
       )}
     </div>

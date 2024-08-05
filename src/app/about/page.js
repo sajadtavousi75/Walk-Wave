@@ -14,9 +14,6 @@ export const metadata={
 export default function About() {
   return (
     <div className="about">
-      <div className=" border-solid border-b-4 border-secondary1 bg-primary1  fixed top-0 left-0 right-0 z-50 ">
-        <Navbar />
-      </div>
       <div className="main mt-[90px]">
         <div className="top mt-40 flex flex-col items-center">
           <svg
@@ -47,7 +44,7 @@ export default function About() {
                 y2="37.5"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#008080" />
+                <stop stopColor="#008080" />
                 <stop offset="0.485371" />
               </linearGradient>
               <linearGradient
@@ -58,7 +55,7 @@ export default function About() {
                 y2="66.25"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0.0212729" stop-color="#008080" />
+                <stop offset="0.0212729" stopColor="#008080" />
                 <stop offset="0.0639996" />
               </linearGradient>
             </defs>
@@ -166,8 +163,8 @@ export default function About() {
               <path
                 d="M22.5782 21.0635C20.5625 22.9908 19.5355 24.4112 18.7812 25.3418C19.8675 26.0017 27.7155 30.8165 31.638 33.3335C32.1035 23.1812 34.0733 12.4367 35 8.3335C27.3965 10.2624 11.8319 16.7937 5 19.8183L13.4052 22.9908C15.9316 21.321 22.2875 17.3557 27.5 14.8532"
                 stroke="#008080"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </div>

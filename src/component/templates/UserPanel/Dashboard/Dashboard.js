@@ -15,13 +15,14 @@ export default function Dashboard() {
     })
     
   return (
-    <div className=' w-full'>
-        <p className='font-quikr'>Welcome to your personalized dashboard!</p>
+    <div className=' w-full '>
+        <p className='font-quikr '>Welcome to your personalized dashboard!</p>
         <p className='font-quikr'>      Here, you can get a quick overview of your account activity and recent interactions with the platform.</p>
         <div className="filter-links flex items-center justify-between mt-4">
             {['Recent Activity', 'Wishlist Items' , 'Recommendations'].map((item , index)=>(
 
           <p
+          key={index}
           onClick={(event)=>{
             setFilterIndex(index)
             setFilterText(event.target.innerText)

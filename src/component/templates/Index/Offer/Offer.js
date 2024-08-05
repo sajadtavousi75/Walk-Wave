@@ -50,10 +50,6 @@ export default function Offer() {
         {allProductData.slice(0,4).map((data)=>(
         <ProductBox key={data._id}  product={data}/>
         ))}
-        {/* <ProductBox />
-        <ProductBox />
-        <ProductBox /> */}
-        {/* <ProductBox /> */}
       </motion.div>
       )}
     </div>

@@ -1,5 +1,4 @@
-import Footer from '@/component/modules/Footer/Footer'
-import Navbar from '@/component/modules/Navbar/Navbar'
+
 import ProductBoxes from '@/component/templates/Shop/ProductBoxes/ProductBoxes'
 import Sidebar from '@/component/templates/Shop/Sidebar/Sidebar'
 import React from 'react'

@@ -3,9 +3,7 @@
 import ProductBox from '@/component/modules/ProductBox/ProductBox'
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation';
-import { useQuery } from '@tanstack/react-query';
-import getProductByCategory from '@/services/product/getProductByCategory';
-import { data } from 'autoprefixer';
+
 
 export default function ProductBoxes() {
   const[allProduct, setAllProduct] = useState([])
@@ -53,30 +51,15 @@ export default function ProductBoxes() {
        result= result.slice().sort((a,b) => sort === 'price: low-high' ? a.price - b.price : b.price - a.price)
       }
 
-      // if(maxPrice){
-      //   result=result.filter(data => data.price <= minPrice )
-      // }
+  
       setFilterProduct(result)
     }
-    // if(allProduct.length){
 
-    //   const res= allProduct.filter(data => data.size.some(as => as === size))
-    //   setFilterProduct(res)
-    // }else{
-    //   setFilterProduct(allProduct)
-    // }
   },[size,minPrice,allProduct,maxPrice ,sort ])
 
-  // useEffect(()=>{
-  //   if(minPrice){
-  //     const res= filterProduct.filter(data => data.price > minPrice )
-  //     setFilterProduct(res)
-  //   }
-  // },[size])
+  
 
-  // useEffect(()=>{
-  //   const res= filterProduct.filter(data => data.price > minPrice )
-  // },[minPrice])
+
 
 
 
@@ -94,15 +77,3 @@ export default function ProductBoxes() {
     </>
   )
 }
-
-
-
-{/* <div className='product-boxes grid gap-2 grid-cols-2  lg:grid-cols-3 xl:grid-cols-4  	 justify-items-center mt-8 md:mt-16 z-0'>
-      {filterProduct?.length ? (
-        filterProduct.map((data) =>(
-          <ProductBox key={data._id} product={data}/>
-        ))
-      ) : (
-        <h2 className='font-kohob text-secondary1 '>There is no product with this specification</h2>
-      )}
-    </div> */}

@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Cart() {
   return (
-    <div className="cart w-full mt-[10px]">
-      <p className="font-kohob text-[24px] border-solid border-b-2 border-secondary1">
+    <div className="cart w-full ">
+      <p className="font-kohob text-[24px] border-solid border-b-2 border-secondary1 text-center">
         CARDS
       </p>
       <div className="boxes ">
@@ -44,15 +44,15 @@ export default function Cart() {
                 height="40"
                 rx="20"
                 fill="#A62639"
-                fill-opacity="0.1"
+                fillOpacity="0.1"
               />
               <path
                 opacity="0.3"
                 d="M17.3335 20V26.6667M22.6668 20V26.6667M9.3335 13.3333H30.6668M12.0002 17.3333V28C12.0002 30.2092 13.791 32 16.0002 32H24.0002C26.2094 32 28.0002 30.2092 28.0002 28V17.3333M16.0002 10.6667C16.0002 9.19391 17.1941 8 18.6668 8H21.3335C22.8063 8 24.0002 9.19391 24.0002 10.6667V13.3333H16.0002V10.6667Z"
                 stroke="#A62639"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </div>
@@ -95,15 +95,15 @@ export default function Cart() {
                 height="40"
                 rx="20"
                 fill="#A62639"
-                fill-opacity="0.1"
+                fillOpacity="0.1"
               />
               <path
                 opacity="0.3"
                 d="M17.3335 20V26.6667M22.6668 20V26.6667M9.3335 13.3333H30.6668M12.0002 17.3333V28C12.0002 30.2092 13.791 32 16.0002 32H24.0002C26.2094 32 28.0002 30.2092 28.0002 28V17.3333M16.0002 10.6667C16.0002 9.19391 17.1941 8 18.6668 8H21.3335C22.8063 8 24.0002 9.19391 24.0002 10.6667V13.3333H16.0002V10.6667Z"
                 stroke="#A62639"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </div>
@@ -146,15 +146,15 @@ export default function Cart() {
                 height="40"
                 rx="20"
                 fill="#A62639"
-                fill-opacity="0.1"
+                fillOpacity="0.1"
               />
               <path
                 opacity="0.3"
                 d="M17.3335 20V26.6667M22.6668 20V26.6667M9.3335 13.3333H30.6668M12.0002 17.3333V28C12.0002 30.2092 13.791 32 16.0002 32H24.0002C26.2094 32 28.0002 30.2092 28.0002 28V17.3333M16.0002 10.6667C16.0002 9.19391 17.1941 8 18.6668 8H21.3335C22.8063 8 24.0002 9.19391 24.0002 10.6667V13.3333H16.0002V10.6667Z"
                 stroke="#A62639"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </div>
@@ -197,15 +197,15 @@ export default function Cart() {
                 height="40"
                 rx="20"
                 fill="#A62639"
-                fill-opacity="0.1"
+                fillOpacity="0.1"
               />
               <path
                 opacity="0.3"
                 d="M17.3335 20V26.6667M22.6668 20V26.6667M9.3335 13.3333H30.6668M12.0002 17.3333V28C12.0002 30.2092 13.791 32 16.0002 32H24.0002C26.2094 32 28.0002 30.2092 28.0002 28V17.3333M16.0002 10.6667C16.0002 9.19391 17.1941 8 18.6668 8H21.3335C22.8063 8 24.0002 9.19391 24.0002 10.6667V13.3333H16.0002V10.6667Z"
                 stroke="#A62639"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </div>

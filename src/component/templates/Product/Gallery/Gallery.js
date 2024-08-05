@@ -18,7 +18,6 @@ export default function Gallery(data) {
   const [star , setStar] =useState(0)
 
 const context=useAuthContext()
-console.log(data.product.cover2[0])
 
   const image1 = [
     {
@@ -42,7 +41,6 @@ console.log(data.product.cover2[0])
   useEffect(() => {
     setImages(image1[0].images);
     setImageUrl(image1[0].images[0]);
-    console.log(image1)
   }, []);
 
   return (
@@ -51,6 +49,7 @@ console.log(data.product.cover2[0])
         <div className="images flex xl:flex-col   gap-4">
           {images.map((item, index) => (
             <div
+            key={index}
               className={`${
                 indexImage === index
                   ? "shadow-[0_5px_15px_1px_rgba(0,0,0,0.15)]"
@@ -89,10 +88,11 @@ console.log(data.product.cover2[0])
         <div className="details flex flex-col xl:flex-row gap-4 items-center justify-between mt-[20px]">
           <div className="images flex xl:flex-col gap-2">
             {image1.map((item, index) => (
-              <>
+              <div key={index}>
               {item.img !=='https://walkwave-project.liara.run/uploads/undefined' ? (
 
               <div
+              
                 onClick={(event) => {
                   setImages(item.images);
                   setIndexImageColor(index);
@@ -110,7 +110,7 @@ console.log(data.product.cover2[0])
               ) : (
                 <></>
               )}
-              </>
+              </div>
             ))}
           </div>
           <div className="size w-[150px]">
@@ -135,7 +135,7 @@ console.log(data.product.cover2[0])
           <div className="btns flex flex-col items-end gap-4">
             <button onClick={()=>{
               if(context.userName === ''){
-                toast.warnning('Please Login')
+                toast.error('Please Login')
               }else{
 
                 toast.success('The product has been added to favorites')
@@ -155,7 +155,7 @@ console.log(data.product.cover2[0])
             </button>
             <button onClick={()=>{
               if(context.userName === ''){
-                toast.warnning('Please Login')
+                toast.error('Please Login')
               }else{
 
                 toast.success('The product has been added to the cart')

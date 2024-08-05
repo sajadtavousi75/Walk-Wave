@@ -1,5 +1,4 @@
-import Footer from "@/component/modules/Footer/Footer";
-import Navbar from "@/component/modules/Navbar/Navbar";
+
 import Banner from "@/component/templates/Index/Banner/Banner";
 import ChildrensCollection from "@/component/templates/Index/ChildrensCollection/ChildrensCollection";
 import Introduction from "@/component/templates/Index/Introduction/Introduction";

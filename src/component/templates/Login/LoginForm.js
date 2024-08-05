@@ -25,9 +25,6 @@ export default function LoginForm() {
     mutationKey: ["user"],
     mutationFn: (data) => AuthLogin(data),
     onSuccess: async (data) => {
-      // context.setEmail(data.user.email)
-      // context.setUserName(data.user.username)
-      // context.setAccessToken(data.accessToken)
       toast.success("Welcome to walkWave");
       await fetch("/api/setAuthCookie", {
         method: "POST",

@@ -7,19 +7,6 @@ export default function Footer() {
     <div className="footer container  mt-24 py-16 border-solid border-t-2 border-secondary1">
       <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
         <div className="flex items-center justify-between gap-8">
-        {/* <div className="link flex flex-col items-start justify-start gap-8">
-          <ul className="font-kohob text-[14px]">
-            <li>SHOP</li>
-            <li>WOMEN</li>
-            <li>MEN</li>
-          </ul>
-          <ul className="font-kohob text-[14px]">
-            <li>About Us</li>
-            <li>Terms and Conditions</li>
-            <li> Privacy Policy</li>
-            <li>FAQ</li>
-          </ul>
-        </div> */}
         <div className="link flex flex-row items-start justify-center gap-8">
           <ul className="font-kohob text-[14px]">
             <Link href='/shop?gender=ALL&category=ALL'>
@@ -64,9 +51,9 @@ export default function Footer() {
                 width="105"
                 height="50"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
                   in="SourceAlpha"
                   type="matrix"
@@ -129,8 +116,8 @@ export default function Footer() {
               <path
                 d="M22.5782 21.0635C20.5625 22.9908 19.5355 24.4112 18.7812 25.3418C19.8675 26.0017 27.7155 30.8165 31.638 33.3335C32.1035 23.1812 34.0733 12.4367 35 8.3335C27.3965 10.2624 11.8319 16.7937 5 19.8183L13.4052 22.9908C15.9316 21.321 22.2875 17.3557 27.5 14.8532"
                 stroke="#008080"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </div>
