@@ -11,13 +11,13 @@ import { usePathname , useSearchParams } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata={
-  title:'WALK WAVE - HOME',
-  icons:{
-    icon:'/images/svgs/Frame 2.svg'
+// export const metadata={
+//   title:'WALK WAVE - HOME',
+//   icons:{
+//     icon:'/images/svgs/Frame 2.svg'
 
-  }
-}
+//   }
+// }
 
 export default function RootLayout({ children }) {
   const pathName=usePathname()
