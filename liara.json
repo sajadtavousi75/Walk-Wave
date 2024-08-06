@@ -1,4 +1,6 @@
 {
-    "platform": "next",
-    "walk": "nextjs-starter"
+    "next":{
+      "modifyConfig": false
+    },
+    "app": "walkwave"
   }
