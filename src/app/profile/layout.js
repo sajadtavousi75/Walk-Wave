@@ -1,5 +1,6 @@
 import Sidebar from '@/component/modules/Sidebar/Sidebar'
 import React from 'react'
+import { Suspense } from 'react'
 
 export default function layout({children}) {
 

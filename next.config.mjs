@@ -2,17 +2,11 @@
 const nextConfig = {
     experimental:{
         appDir: true,
+        missingSuspenseWithCSRBailout: false,
     },
-    // images: {
-    //     remotePatterns: [
-    //       {
-    //         protocol: 'http',
-    //         hostname: 'localhost',
-    //         port: '',
-    //         pathname: '**',
-    //       },
-    //     ],
-    //   },
+    images: {
+       domains:['walkwave-project.liara.run']
+      },
 };
 
 export default nextConfig;

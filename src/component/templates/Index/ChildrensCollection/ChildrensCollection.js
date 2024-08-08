@@ -52,16 +52,16 @@ export default function ChildrensCollection() {
           transition={{  stiffness: 100 , duration:2 }}
           className=' absolute z-10'
           >
-          <img  src="./images/children/Frame 18.png" alt="" />
+          <img loading="lazy"  src="./images/children/Frame 18.png" alt="" />
           </motion.div>
-          <img className='absolute z-0 bottom-6 -left-16' src="./images/children/a.png" alt="" />
+          <img loading="lazy" className='absolute z-0 bottom-6 -left-16' src="./images/children/a.png" alt="" />
           <motion.div 
           initial={{ opacity: 1, bottom:24, left:-64 }}
           animate={{ opacity: 1, bottom:125, left:-100 }}
           transition={{  stiffness: 100 , duration:2 }}
           className='absolute '
           >
-          <img  src="./images/children/b.png" alt="" />
+          <img loading="lazy"  src="./images/children/b.png" alt="" />
           </motion.div>
           <motion.div 
           initial={{ opacity: 1, bottom:24, left:-64 }}
@@ -70,7 +70,7 @@ export default function ChildrensCollection() {
           className='absolute '
           >
 
-          <img  src="./images/children/c.png" alt="" />
+          <img loading="lazy" src="./images/children/c.png" alt="" />
           </motion.div>
           <motion.div 
           initial={{ opacity: 1, bottom:24, left:-64 }}
@@ -79,14 +79,14 @@ export default function ChildrensCollection() {
           className='absolute '
           >
 
-          <img  src="./images/children/d.png" alt="" />
+          <img loading="lazy" src="./images/children/d.png" alt="" />
           </motion.div>
           <motion.div
           initial={{ opacity: 1, bottom:24, left:-64 }}
           animate={{ opacity: 1, top:0, left:-20 }}
           transition={{  stiffness: 100 , duration:2 }}
           className='absolute'>
-          <img  src="./images/children/e.png" alt="" />
+          <img loading="lazy" src="./images/children/e.png" alt="" />
           </motion.div>
         </div>
         <motion.div
@@ -94,7 +94,7 @@ export default function ChildrensCollection() {
         animate={{ opacity: 1, y:0 }}
         transition={{  stiffness: 100 , duration:2 }}
         className='md:hidden'>
-          <img src="./images/children/Frame 67.png" alt="" />
+          <img loading="lazy" src="./images/children/Frame 67.png" alt="" />
         </motion.div>
         </>
       )}

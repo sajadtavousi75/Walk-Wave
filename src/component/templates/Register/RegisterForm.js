@@ -29,7 +29,15 @@ export default function RegisterForm() {
       context.setEmail(data.user.email)
       context.setUserName(data.user.username)
       context.setAccessToken(data.accessToken)
-      toast.success('Welcome to walkWave')
+      toast.success('Welcome to walkWave',{
+        style:{
+          width:'500px',
+          backgroundColor:'#33ff7a',
+          color:'white',
+          textAlign:'center',
+          fontFamily:'kohob'
+        }
+      })
       await fetch('/api/setAuthCookie', {
         method: 'POST',
         headers: {
@@ -47,7 +55,7 @@ export default function RegisterForm() {
   }
 
   return (
-    <div className='  bg-custom-svg bg-no-repeat bg-center bg-cover mt-[110px]'>
+    <div className='   mt-[110px]'>
         <p className='font-quikr text-[48px] text-center'>Welcome to <span className='text-secondary1 font-kohob'>WalkWave</span>,</p>
         <p className='font-quikr text-[48px] text-center'>where passion meets innovation.</p>
         <div className="form-content flex items-center justify-center">

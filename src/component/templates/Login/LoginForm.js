@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import getUserInfos from "@/services/Auth/getUserInfos";
 import Cookies from "js-cookie";
 import { useAuthContext } from "@/context/authContext";
+import Link from "next/link";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -25,7 +26,15 @@ export default function LoginForm() {
     mutationKey: ["user"],
     mutationFn: (data) => AuthLogin(data),
     onSuccess: async (data) => {
-      toast.success("Welcome to walkWave");
+      toast.success("Welcome to walkWave",{
+        style:{
+          width:'500px',
+          backgroundColor:'#33ff7a',
+          color:'white',
+          textAlign:'center',
+          fontFamily:'kohob'
+        }
+      });
       await fetch("/api/setAuthCookie", {
         method: "POST",
         headers: {
@@ -49,7 +58,15 @@ export default function LoginForm() {
       }
     },
     onError:()=>{
-      toast.error('The information entered is incorrect')
+      toast.error('The information entered is incorrect',{
+        style:{
+          width:'400px',
+          backgroundColor:'red',
+          color:'white',
+          textAlign:"center",
+          fontFamily:'kohob'
+        }
+      })
     }
   });
 
@@ -126,7 +143,7 @@ export default function LoginForm() {
           </button>
           <p className="font-quikr">
             Already have an account ?{" "}
-            <span className="font-kohob text-secondary1">SIGN UP</span>
+            <Link href='/register' className="font-kohob text-secondary1">SIGN UP</Link>
           </p>
         </form>
       </div>

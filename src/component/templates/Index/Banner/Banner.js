@@ -33,7 +33,7 @@ export default function Banner() {
         transition={{  stiffness: 100 , duration:2}}
         className='w-full '
         >
-        <img className='w-full '  src="./images/banner/banner1.png" alt="" />
+        <img loading="lazy" className='w-full '  src="./images/banner/banner1.png" alt="" />
         </motion.div>
         <motion.div
         initial={{ opacity: 1, bottom:-80}}
@@ -41,7 +41,7 @@ export default function Banner() {
         transition={{  stiffness: 100 , duration:2 }}
         className='absolute hidden md:block left-[15%] lg:left-[25%] xl:left-[30%]'
         >
-        <img className=''  src="/images/banner/banner2.png" alt="" />
+        <img loading="lazy" className=''  src="/images/banner/banner2.png" alt="" />
         </motion.div>
         <motion.div
         initial={{ opacity: 1, bottom:-80}}
@@ -49,7 +49,7 @@ export default function Banner() {
         transition={{  stiffness: 100 , duration:2 }}
         className='absolute md:hidden  min-[500px]:left-[20%] '
         >
-        <img className=''  src="/images/banner/banner3.png" alt="" />
+        <img loading="lazy" className=''  src="/images/banner/banner3.png" alt="" />
         </motion.div>
             </>
         )}

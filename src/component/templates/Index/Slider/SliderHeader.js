@@ -42,11 +42,13 @@ export default function SliderHeader() {
         className="hidden sm:block w-[100%] xl:h-[550px]"
           src="./images/slider/slide2.png"
           alt="Slide"
+          loading="lazy"
         />
         <img
         className="w-[100%] sm:hidden"
           src="./images/slider/1.png"
           alt="Slide"
+          loading="lazy"
         />
         <div className=" hidden w-[30px] h-[100%] xl:flex flex-col items-center gap-2 font-kohol text-[23px] bg-primary/15 px-2 text-primary1 absolute  top-0 left-48 z-10">
           <h1 className={styles.animate}>
@@ -59,11 +61,13 @@ export default function SliderHeader() {
         className="hidden sm:block w-[100%] xl:h-[550px]"
           src="./images/slider/slide3.png"
           alt="Slide" 
+          loading="lazy"
         />
         <img
         className="w-[100%] sm:hidden"
           src="./images/slider/2.png"
           alt="Slide"
+          loading="lazy"
         />
         <div className="hidden w-[30px] h-[100%] xl:flex flex-col items-center gap-2 font-kohol text-[31px] bg-primary/15 px-2 text-primary1 absolute  top-0 left-48 z-10">
           <h1 className={styles.animate}>
@@ -76,11 +80,13 @@ export default function SliderHeader() {
         className="hidden sm:block w-[100%] xl:h-[550px]"
           src="./images/slider/3.png"
           alt="Slide"
+          loading="lazy"
         />
         <img
         className="w-[100%] sm:hidden"
           src="./images/slider/4.png"
           alt="Slide"
+          loading="lazy"
         />
         <div className="hidden w-[30px] h-[100%] xl:flex flex-col items-center gap-2 font-kohol text-[31px] bg-primary/15 px-2 text-primary1 absolute  top-0 left-48 z-10">
           <h1 className={styles.animate}>

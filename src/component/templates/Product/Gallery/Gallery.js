@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ReviewBox from "../ReviewBox/ReviewBox";
 import toast from 'react-hot-toast';
 import { useAuthContext } from "@/context/authContext";
+import Image from "next/image";
 
 export default function Gallery(data) {
   const [sizeIndex, setSizeIndex] = useState(null);
@@ -57,6 +58,7 @@ const context=useAuthContext()
               } w-[80px] h-[100px] flex items-center rounded-[20px] `}
             >
               <img
+              loading="lazy"
                 onMouseEnter={(event) => {
                   setImageUrl(event.target.currentSrc);
                   setIndexImage(index);
@@ -70,7 +72,7 @@ const context=useAuthContext()
           ))}
         </div>
         <div className="big-image h-[350px] w-[350px] md:h-[450px] md:w-[450px] xl:w-[540px] xl:h-[540px] flex items-center overflow-hidden  rounded-[40px]">
-          <img className=" rounded-[40px] h-[350px] w-[350px] md:w-[450px] md:h-[450px] xl:w-[540px] xl:h-[540px] object-cover " src={imageUrl} alt="" />
+          <img loading="lazy" className=" rounded-[40px] h-[350px] w-[350px] md:w-[450px] md:h-[450px] xl:w-[540px] xl:h-[540px] object-cover " src={imageUrl} alt="" />
         </div>
       </div>
       <div className="right-gallery w-[100%] ">
@@ -105,7 +107,7 @@ const context=useAuthContext()
                     : ""
                 } w-[80px] h-100px rounded-[20px] `}
               >
-                <img className="rounded-[20px]" src={item.img} alt="" />
+                <img loading="lazy" className="rounded-[20px]" src={item.img} alt="" />
               </div>
               ) : (
                 <></>
@@ -135,10 +137,26 @@ const context=useAuthContext()
           <div className="btns flex flex-col items-end gap-4">
             <button onClick={()=>{
               if(context.userName === ''){
-                toast.error('Please Login')
+                toast.error('Please Login',{
+                  style:{
+                    width:'400px',
+                    backgroundColor:'red',
+                    color:'white',
+                    textAlign:"center",
+                    fontFamily:'kohob'
+                  }
+                })
               }else{
 
-                toast.success('The product has been added to favorites')
+                toast.success('The product has been added to favorites',{
+                  style:{
+                    width:'500px',
+                    backgroundColor:'#33ff7a',
+                    color:'white',
+                    textAlign:'center',
+                    fontFamily:'kohob'
+                  }
+                })
               }
             }} className="group w-[300px] h-[40px] rounded-full font-kohob border-solid border-[1px] border-primary flex items-center justify-center gap-4 hover:bg-secondary1 hover:text-primary1 hover:border-secondary1 transition-all duration-700 ease-in-out">
               favourite
@@ -155,10 +173,26 @@ const context=useAuthContext()
             </button>
             <button onClick={()=>{
               if(context.userName === ''){
-                toast.error('Please Login')
+                toast.error('Please Login',{
+                  style:{
+                    width:'400px',
+                    backgroundColor:'red',
+                    color:'white',
+                    textAlign:"center",
+                    fontFamily:'kohob'
+                  }
+                })
               }else{
 
-                toast.success('The product has been added to the cart')
+                toast.success('The product has been added to the cart',{
+                  style:{
+                    width:'500px',
+                    backgroundColor:'#33ff7a',
+                    color:'white',
+                    textAlign:'center',
+                    fontFamily:'kohob'
+                  }
+                })
               }
             }} className="w-[300px] h-[40px] rounded-full font-kohob border-solid border-[1px] border-primary text-primary1 bg-primary hover:bg-secondary1 hover:border-secondary1 transition-all duration-700 ease-in-out">
               ADD TO CART

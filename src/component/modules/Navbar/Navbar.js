@@ -285,7 +285,15 @@ export default function Navbar() {
             >
               {context.userName === '' ? (
                 <img onClick={()=>{
-                  toast.error('Please login')
+                  toast.error('Please login',{
+                    style:{
+                      width:'400px',
+                      backgroundColor:'red',
+                      color:'white',
+                      textAlign:"center",
+                      fontFamily:'kohob'
+                    }
+                  })
                 }} src="/images/basket 1.png" alt="" />
               ) : (
 
@@ -332,7 +340,7 @@ export default function Navbar() {
             showShop
               ? "top-24 h-[200px] opacity-100 visible"
               : "top-24 h-0 opacity-0 invisible"
-          } transition-all duration-700 ease-in-out w-[100%]  bg-primary1 shadow-lg absolute z-10 `}
+          } transition-all duration-700 ease-in-out w-[100%]  bg-primary1 shadow-lg absolute z-10 flex items-center justify-center`}
         >
           <div className="flex items-center justify-center gap-[100px] mr-24">
             <div>
@@ -473,7 +481,15 @@ export default function Navbar() {
               >
                 {context.userName === '' ? (
                 <img onClick={()=>{
-                  toast.error('Please login')
+                  toast.error('Please login',{
+                    style:{
+                      width:'400px',
+                      backgroundColor:'red',
+                      color:'white',
+                      textAlign:"center",
+                      fontFamily:'kohob'
+                    }
+                  })
                   setShowMobileNavbar(true)
                 }} src="/images/basket 1.png" alt="" />
               ) : (

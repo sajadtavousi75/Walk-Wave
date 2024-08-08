@@ -19,7 +19,7 @@ export default function Sidebar() {
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [categoryValue, setCategoryValue] = useState("All");
   const [sizeIndex, setSizeIndex] = useState(null);
-  const [sizeValue, setSizeValue] = useState("All");
+  const [sizeValue, setSizeValue] = useState("");
   const [showFilterMobile, setShowFilterMobile] = useState(false);
 
   const router = useRouter()
@@ -448,7 +448,6 @@ export default function Sidebar() {
               >
                 <ul className="font-kohol grid grid-cols-3 ">
                   {[
-                    "ALL",
                     "35",
                     "36",
                     "37.5",
