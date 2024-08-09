@@ -202,7 +202,7 @@ export default function Navbar() {
                 onMouseLeave={() => setShowShop(false)}
                 className={`${
                   showShop
-                    ? "  h-[80px] "
+                    ? "  h-[80px] text-secondary1 "
                     : "h-[0px] "
                 } ${pathName === '/shop' ? 'font-kohob text-secondary1' : 'font-kohol '} transition-all duration-700 ease-in-out cursor-pointer   flex items-center justify-center`}
               >
@@ -271,8 +271,8 @@ export default function Navbar() {
             <button
               className={`${
                 showSearch
-                  ? "opacity-100 translate-x-16 visible"
-                  : "opacity-0  translate-x-40 invisible"
+                  ? "opacity-100 translate-x-16 "
+                  : "opacity-0  translate-x-40 "
               } transition-all duration-700 ease-in-out flex items-center justify-center`}
               onClick={cancelhandel}
             >
@@ -281,7 +281,7 @@ export default function Navbar() {
             <button
               className={`${
                 showSearch ? "invisible" : "visible "
-              } transition-all duration-300 ease-in-out`}
+              } transition-all duration-300 ease-in-out mr-8`}
             >
               {context.userName === '' ? (
                 <img onClick={()=>{
@@ -326,20 +326,24 @@ export default function Navbar() {
             resultSearch ? "top-24 h-[100vh] overflow-y-scroll	pb-24 visible opacity-100" : "top-24 h-0 invisible opacity-0"
           } transition-all duration-700 ease-in-out w-[100%]  bg-secondary1 absolute z-10 `}
         >
-          <h1 className="font-kohob text-center">SEARCH RESULT</h1>
-          <div onClick={handelSearch} className="product-boxes container py-8 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 	 justify-items-center">
+          {filterSerach.length ? (
+
+          <div onClick={handelSearch} className={`${resultSearch ? 'grid' : 'hidden'} transition-all duration-300 ease-in-out product-boxes container py-8 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 	 justify-items-center`}>
             {filterSerach?.map((data)=>(
               <ProductBox  key={data._id} product={data}/>
             ))}
           </div>
+          ) : (
+            <h1 className="font-kohob text-center text-primary1 mt-56">NOT FOUND</h1>
+          )}
         </div>
         <div
           onMouseEnter={() => setShowShop(true)}
           onMouseLeave={() => setShowShop(false)}
           className={`${
             showShop
-              ? "top-24 h-[200px] opacity-100 visible"
-              : "top-24 h-0 opacity-0 invisible"
+              ? "top-24 h-[200px] opacity-100 z-100 visible"
+              : "top-24 h-0 opacity-0 z-[-20] invisible"
           } transition-all duration-700 ease-in-out w-[100%]  bg-primary1 shadow-lg absolute z-10 flex items-center justify-center`}
         >
           <div className="flex items-center justify-center gap-[100px] mr-24">
@@ -574,12 +578,16 @@ export default function Navbar() {
             showMobileSearchResult ? "top-[78px] h-[100vh]" : "top-[78px] h-0"
           } transition-all duration-700 ease-in-out bg-primary1   absolute  left-0 right-0 overflow-x-hidden overflow-y-hidden mt-[5px] z-10`}
         >
-          <h1 className="font-kohob text-center">SEARCH RESULT</h1>
+          {filterSerach.length ? (
+
           <div onClick={handelSearch} className="product-boxes container py-8 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 	 justify-items-center">
             {filterSerach?.map((data)=>(
               <ProductBox  key={data._id} product={data}/>
             ))}
           </div>
+          ) : (
+            <h1 className="font-kohob text-center text-secondary1 mt-48">NOT FOUND</h1>
+          )}
         </div>
       </div>
     </>

@@ -56,8 +56,8 @@ export default function RegisterForm() {
 
   return (
     <div className='   mt-[110px]'>
-        <p className='font-quikr text-[48px] text-center'>Welcome to <span className='text-secondary1 font-kohob'>WalkWave</span>,</p>
-        <p className='font-quikr text-[48px] text-center'>where passion meets innovation.</p>
+        <p className='font-quikr text-[24px] lg:text-[48px] text-center'>Welcome to <span className='text-secondary1 font-kohob'>WalkWave</span>,</p>
+        <p className='font-quikr text-[24px] lg:text-[48px] text-center'>where passion meets innovation.</p>
         <div className="form-content flex items-center justify-center">
             <form onSubmit={handleSubmit(onSubmit)} action="" className='w-[380px] h-auto p-3 shadow-lg bg-primary1 rounded-lg flex flex-col items-center justify-cneter gap-4'>
                 <h1 className={styles.text}>SIGN UP</h1>

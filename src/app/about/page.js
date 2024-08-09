@@ -1,5 +1,6 @@
 import Footer from "@/component/modules/Footer/Footer";
 import Navbar from "@/component/modules/Navbar/Navbar";
+import Link from "next/link";
 import React from "react";
 
 
@@ -179,9 +180,12 @@ export default function About() {
             <h1 className="font-kohob text-[36px] text-primary1 text-center md:text-start">
               Explore our collections
             </h1>
+            <Link href='/shop?gender=ALL&category=ALL'>
+            
             <button className="w-[300px] h-[40px] rounded-full bg-primary text-primary1 font-kohob mt-4">
               Explore
             </button>
+            </Link>
           </div>
           <div className="left container md:w-[410px] absolute top-0 ">
             <h1 className="font-kohob text-[64px] text-primary1">Ready to step into style with</h1>

@@ -199,8 +199,8 @@ const context=useAuthContext()
             </button>
           </div>
         </div>
-        <div className="reviews bg-secondary1/10 min-h-[135px] rounded-[24px] p-4 mt-2">
-          <div className="top flex items-center justify-between">
+        <div className="reviews bg-secondary1/10 min-h-[135px] rounded-[24px] py-4 px-8 ">
+          <div className="top flex items-start justify-between mb-4">
             <h1 className="font-kohob text-[24px]">Reviews</h1>
             <span className="flex items-center justify-center gap-2 font-kohob text-[24px]">
               5

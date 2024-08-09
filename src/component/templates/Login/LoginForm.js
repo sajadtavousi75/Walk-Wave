@@ -76,10 +76,10 @@ export default function LoginForm() {
 
   return (
     <div className="   mt-[110px]">
-      <p className="font-quikr text-[48px] text-center">
+      <p className="font-quikr text-[24px] lg:text-[48px] text-center">
         Welcome to <span className="text-secondary1 font-kohob">WalkWave</span>,
       </p>
-      <p className="font-quikr text-[48px] text-center">
+      <p className="font-quikr text-[24px] lg:text-[48px] text-center">
         where passion meets innovation.
       </p>
       <div className="form-content flex items-center justify-center">

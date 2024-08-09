@@ -10,12 +10,12 @@ export default function NewProducts({title}) {
   const [scrolProduct , setScrolProduct] = useState(false)
   const [allProduct , setAllProduct]= useState([])
 
-    const {data:allProductData}=useQuery({
+    const {data:allProductData , isLoading , isError}=useQuery({
       queryKey:['AllProduct'],
       queryFn:async()=>await getAllProduct()
     })
 
-
+console.log(isLoading ,isError)
   
 
   useEffect(()=>{
