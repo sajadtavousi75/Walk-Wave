@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const baseURL= 'https://walkwave-project.liara.run/api/v1'
+const baseURL= 'https://backend-walk.onrender.com/api/v1'
 
 axios.defaults.withCredentials =true
 

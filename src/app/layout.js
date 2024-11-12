@@ -49,7 +49,6 @@ export default function RootLayout({ children }) {
           </div>
           <Footer />
         </body>
-
       </Providers>
       </AuthContextProvider>
     </html>

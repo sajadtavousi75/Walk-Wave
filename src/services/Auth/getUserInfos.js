@@ -9,7 +9,7 @@ const getUserInfos=async()=>{
     const token= Cookies.get('access-token')
     if(token){
 
-     await fetch('https://walkwave-project.liara.run/api/v1/auth/me',{
+     await fetch('https://backend-walk.onrender.com/api/v1/auth/me',{
         headers:{
           "Authorization":`Bearer ${token}`
         }

@@ -45,7 +45,7 @@ export default function LoginForm() {
       router.push("/");
       const token = Cookies.get("access-token");
       if (token) {
-        fetch("https://walkwave-project.liara.run/api/v1/auth/me", {
+        fetch("https://backend-walk.onrender.com/api/v1/auth/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

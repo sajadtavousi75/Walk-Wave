@@ -22,19 +22,19 @@ const context=useAuthContext()
 
   const image1 = [
     {
-      img: `https://walkwave-project.liara.run/uploads/${data.product.cover1[0]}`,
+      img: `https://backend-walk.onrender.com/uploads/${data.product.cover1[0]}`,
       images: [
-        `https://walkwave-project.liara.run/uploads/${data.product.cover1[0]}`,
-        `https://walkwave-project.liara.run/uploads/${data.product.cover1[1]}`,
-        `https://walkwave-project.liara.run/uploads/${data.product.cover1[2]}`,
+        `https://backend-walk.onrender.com/uploads/${data.product.cover1[0]}`,
+        `https://backend-walk.onrender.com/uploads/${data.product.cover1[1]}`,
+        `https://backend-walk.onrender.com/uploads/${data.product.cover1[2]}`,
       ],
     },
     {
-      img: `https://walkwave-project.liara.run/uploads/${data.product.cover2[0]}`,
+      img: `https://backend-walk.onrender.com/uploads/${data.product.cover2[0]}`,
       images: [
-        `https://walkwave-project.liara.run/uploads/${data.product.cover2[0]}`,
-        `https://walkwave-project.liara.run/uploads/${data.product.cover2[1]}`,
-        `https://walkwave-project.liara.run/uploads/${data.product.cover2[2]}`,
+        `https://backend-walk.onrender.com/uploads/${data.product.cover2[0]}`,
+        `https://backend-walk.onrender.com/uploads/${data.product.cover2[1]}`,
+        `https://backend-walk.onrender.com/uploads/${data.product.cover2[2]}`,
       ],
     },
   ];
@@ -91,7 +91,7 @@ const context=useAuthContext()
           <div className="images flex xl:flex-col gap-2">
             {image1.map((item, index) => (
               <div key={index}>
-              {item.img !=='https://walkwave-project.liara.run/uploads/undefined' ? (
+              {item.img !=='https://backend-walk.onrender.com/uploads/undefined' ? (
 
               <div
               

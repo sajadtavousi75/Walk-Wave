@@ -15,7 +15,7 @@ export default function ProductBox(data) {
         </div>
         {/* <img className=' absolute group-hover:scale-[0.2] group-hover:invisible group-hover:opacity-0 transition-all duration-700 ease-in-out w-[160px] h-[160px] sm:w-[220px] sm:h-[220px] xl:w-[250px] xl:h-[250px] rounded-[50px] rounded-[50px] object-cover' src={`https://walkwave-project.liara.run/uploads/${data.product.cover1[0]}`} alt="" /> */}
         <Image
-        src={`https://walkwave-project.liara.run/uploads/${data.product.cover1[2]}`}
+        src={`https://backend-walk.onrender.com/uploads/${data.product.cover1[2]}`}
         width={250}
         height={250}
         alt='image1'
@@ -23,7 +23,7 @@ export default function ProductBox(data) {
         />
         {/* <img className='scale-[0.2] invisible opacity-0 absolute group-hover:scale-[1] group-hover:visible group-hover:opacity-100 transition-all duration-700 ease-in-out w-[160px] h-[160px] sm:w-[220px] sm:h-[220px] xl:w-[250px] xl:h-[250px] rounded-[50px] rounded-[50px] object-cover ' src={`https://walkwave-project.liara.run/uploads/${data.product.cover1[1]}`} alt="" /> */}
         <Image 
-        src={`https://walkwave-project.liara.run/uploads/${data.product.cover1[1]}`}
+        src={`https://backend-walk.onrender.com/uploads/${data.product.cover1[1]}`}
         width={250}
         height={250}
         alt='image2'
