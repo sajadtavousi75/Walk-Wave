@@ -24,7 +24,7 @@ export default function ProductBoxes() {
 
 
   const getCategory=async()=>{
-    await fetch(`https://backend-walk.onrender.com/api/v1/product/category/${category}/gender/${gender}`)
+    await fetch(`https://walkwave-project.liara.run/api/v1/product/category/${category}/gender/${gender}`)
     .then((res)=>res.json())
     .then((data)=>{
       setAllProduct(data[0])

@@ -15,7 +15,7 @@ export default function NewProducts({title}) {
       queryFn:async()=>await getAllProduct()
     })
 
-console.log(isLoading ,isError)
+console.log(allProductData)
   
 
   useEffect(()=>{
